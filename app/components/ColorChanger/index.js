@@ -21,9 +21,10 @@ class Home extends React.Component {
         <Title color={this.props.color}>{this.props.title}</Title>
         <button onClick={() => signals.colorChanged({color: 'red'})}>Red</button>
         {' | '}
-        <button onClick={() => signals.colorChanged({color: 'blue'})}>Blue</button>
+        <button onClick={() => signals.colorChanged({color: 'Green'})}>Green</button>
         {' | '}
         <button onClick={() => signals.randomColorClicked()}>Random</button>
+        <input onChange={(e) => signals.titleChanged({title: e.target.value})}/>
       </div>
     );
   }

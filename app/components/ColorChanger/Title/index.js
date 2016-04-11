@@ -4,7 +4,7 @@ import styles from './styles.css';
 function Title(props) {
   return (
     <h1 style={{color: props.color}} className={styles.title}>
-      {props.children}
+    {props.children}
     </h1>
   );
 }

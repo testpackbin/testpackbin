@@ -1,5 +1,6 @@
 import colorChanged from './signals/colorChanged';
 import redirectRoot from './signals/redirectRoot';
+import titleChanged from './signals/titleChanged';
 import randomColorClicked from './signals/randomColorClicked';
 
 export default (options = {}) => {
@@ -11,6 +12,7 @@ export default (options = {}) => {
     });
 
     module.addSignals({
+      titleChanged,
       colorChanged,
       redirectRoot,
       randomColorClicked
