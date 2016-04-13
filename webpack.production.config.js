@@ -5,7 +5,7 @@ module.exports = {
       loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]'
     },
     {
-      test: /\.js?$/,
+      test: /\.jsx?$/,
       exclude: /node_modules/,
       loader: 'babel',
       query: {

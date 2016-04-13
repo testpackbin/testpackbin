@@ -21,7 +21,7 @@
   "homepage": "https://github.com/testpackbin/testpackbin.git",
   "scripts": {
     "start": "concurrently \"npm run client\" \"npm run server\"",
-    "client": "cross-env kotatsu serve app/main.js --index index.html --config webpack.config.js --devtool eval-source-map --proxy /api http://localhost:4000/api",
+    "client": "cross-env kotatsu serve app/main.jsx --index index.html --config webpack.config.js --devtool eval-source-map --proxy /api http://localhost:4000/api",
     "server": "cross-env kotatsu start start.js --source-maps",
     "build": "concurrently \"npm run client:build\" \"npm run server:build\"",
     "client:build": "cross-env NODE_ENV=production kotatsu build client app/main.js --config webpack.production.config.js --minify -o dist/client_bundle.js ",
@@ -34,6 +34,7 @@
     "cerebral-model-baobab": "^0.4.7",
     "cerebral-module-devtools": "^0.5.3",
     "cerebral-module-http": "^0.1.1",
+    "cerebral-module-recorder": "^0.5.7",
     "cerebral-module-router": "^0.12.5",
     "cerebral-view-react": "^0.11.6",
     "express": "^4.13.4",

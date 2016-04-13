@@ -1,7 +1,6 @@
 import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
 import ToolbarButton from 'common/components/ToolbarButton';
-import classNames from 'classnames';
 import styles from './styles.css';
 
 @Cerebral()
@@ -26,7 +25,7 @@ class ToolbarButtonPopover extends React.Component {
   }
   render() {
     return (
-      <div className={classNames(styles.wrapper, {[this.props.className]: this.props.className})}>
+      <div className={this.props.className}>
         <ToolbarButton
           active={this.props.show}
           icon={this.props.icon}

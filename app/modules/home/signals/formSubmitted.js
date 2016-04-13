@@ -17,7 +17,7 @@ export default [
         )
     ],
     error: [
-      showSnackbar('Kunne ikke registrere din e-post')
+      showSnackbar('Failed to register your email')
     ]
   }
 ];

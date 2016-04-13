@@ -6,28 +6,22 @@ import Router from 'cerebral-module-router';
 import Http from 'cerebral-module-http';
 import Recorder from 'cerebral-module-recorder';
 import Devtools from 'cerebral-module-devtools';
-import localAssignments from './services/localAssignments';
-import localLastCourse from './services/localLastCourse';
 
-import App from './App.js';
+import App from 'components/App/index';
 
 import Home from './modules/home';
-import Sessions from './modules/sessions';
 import Courses from './modules/courses';
-import Course from './modules/course';
-import TechTree from './modules/techTree';
-import MainAssignment from './modules/mainAssignment';
-import Descriptions from './modules/descriptions';
 
-import showSnackbar from 'common/factories/actions/showSnackbar.js';
-import hideSnackbar from 'common/factories/actions/hideSnackbar.js';
+
+import showSnackbar from 'common/factories/actions/showSnackbar';
+import hideSnackbar from 'common/factories/actions/hideSnackbar';
 
 controller.addSignals({
   snackbarTimedOut: [
     hideSnackbar
   ],
   missingRouteRouted: [
-    showSnackbar('Denne url-en finnes ikke')
+    showSnackbar('This route does not exist')
   ]
 });
 
@@ -39,19 +33,13 @@ controller.addServices({
       offsetLeft: previewIframe.offsetParent.offsetLeft + previewIframe.offsetLeft,
       offsetTop: previewIframe.offsetParent.offsetTop + previewIframe.offsetTop
     };
-  },
-  localAssignments,
-  localLastCourse
+  }
 });
 
 controller.addModules({
   home: Home(),
-  sessions: Sessions(),
   courses: Courses(),
-  course: Course(),
-  techTree: TechTree(),
-  mainAssignment: MainAssignment(),
-  descriptions: Descriptions(),
+
 
   http: Http(),
   recorder: Recorder({
@@ -69,11 +57,7 @@ controller.addModules({
   router: Router({
     '/': 'home.opened',
     '/courses': 'courses.opened',
-    '/courses/:courseId/scenes/:sceneIndex': 'course.opened',
-    '/sessions': 'sessions.opened',
-    '/techtree': 'techTree.opened',
-    '/mainassignment/:userId': 'mainAssignment.opened',
-    '/mainassignment/:userId/:preview': 'mainAssignment.previewOpened',
+   // '/courses/:courseId': 'course.opened',
     '*': 'missingRouteRouted'
   }, {
     onlyHash: true,

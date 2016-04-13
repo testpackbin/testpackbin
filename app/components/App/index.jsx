@@ -1,18 +1,13 @@
 import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
-import Course from './components/Course';
-import Home from './components/Home';
-import Courses from './components/Courses';
-import Sessions from './components/Sessions';
-import MainAssignment from './components/MainAssignment/MainAssignment';
-import styles from './App.css';
+
+import Home from 'components/Home';
+import Courses from 'components/Courses';
+import styles from './styles.css';
 
 const pages = {
   'home': Home,
-  'course': Course,
-  'courses': Courses,
-  'sessions': Sessions,
-  'mainAssignment': MainAssignment
+  'courses': Courses
 };
 
 @Cerebral({
