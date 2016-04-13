@@ -1,7 +1,7 @@
 {
   "name": "testpackbin",
-  "version": "0.0.1",
-  "description": "Testable bins expansion for WebpackBin service",
+  "version": "0.0.01",
+  "description": "An extension of the excellent webpackbin",
   "main": "server.js",
   "repository": {
     "type": "git",
