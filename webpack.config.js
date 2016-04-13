@@ -13,12 +13,14 @@ module.exports = {
     publicPath: '/'
   },
   module: {
+    debug: true,
+    devtool: 'source-map',
     loaders: [{
       test: /\.css?$/,
       loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]'
     },
     {
-      test: /\.js?$/,
+      test: /\.jsx?$/,
       exclude: /node_modules/,
       loader: 'babel',
       query: {
@@ -28,5 +30,9 @@ module.exports = {
         ]
       }
     }]
+  },
+  resolve: {
+    extensions: ["", ".js", ".jsx"],
+    root: path.resolve('./app')
   }
 };
