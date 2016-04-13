@@ -5,6 +5,7 @@ import continueCourseClicked from './signals/continueCourseClicked';
 import registerFormSubmitted from './signals/registerFormSubmitted';
 import loginFormSubmitted from './signals/loginFormSubmitted';
 import inputChange from './signals/inputChange';
+import shortCutClicked from './signals/shortCutClicked';
 
 export default () => {
   return (module) => {
@@ -27,6 +28,7 @@ export default () => {
 
     module.addSignals({
       opened,
+      shortCutClicked,
       startCourseClicked,
       restartCourseClicked,
       continueCourseClicked,
