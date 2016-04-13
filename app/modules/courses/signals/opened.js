@@ -9,7 +9,7 @@ export default [
   set('state:/courses.isLoading', true),
   loadCourses, {
     success: [copy('input:/courses', 'state:/courses.courses')],
-    error: [showSnackbar('Det oppstod en feil ved henting av kurs!')]
+    error: [showSnackbar('An error occured when retrieving course!')]
   },
   set('state:/courses.isLoading', false)
 ];

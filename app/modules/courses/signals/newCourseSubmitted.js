@@ -7,6 +7,6 @@ export default [
   set('state:/courses.isSavingNewCourse', true),
   saveCourse, {
     success: [redirectToCourse],
-    error: [showSnackbar('Kunne ikke lagre kurs')]
+    error: [showSnackbar('Failed to save courses')]
   }
 ];
