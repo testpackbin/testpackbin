@@ -1,9 +1,13 @@
-var express = require('express');
-var user = require('./controllers/userCtrl');
-var mongoose = require('mongoose');
-var config = require('../config');
+const express = require('express');
+const user = require('./controllers/userCtrl');
+const mongoose = require('mongoose');
+const config = require('../config');
+const bins = require('./controllers/binCtrl');
+const bodyParser = require('body-parser');
 
-var app = express();
+const app = express();
+
+app.use(bodyParser.json());
 
 
 mongoose.connect(config.mongoURI[process.env.NODE_ENV || 'development'], function(err, res) {
@@ -14,7 +18,15 @@ mongoose.connect(config.mongoURI[process.env.NODE_ENV || 'development'], functio
   }
 })
 
+
+// Bins
+app.post('/api/bins', bins.create);
+app.put('/api/bins', bins.update);
+
+// Users
 app.post('/api/login', user.login);
+app.post('/api/users', user.create);
+
 
 app.get('/', function(req, res) {
   return res.send(fs.readFileSync(path.resolve('..', 'index.html')));
