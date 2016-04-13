@@ -12,7 +12,6 @@ class CoursesList extends React.Component {
   courseClicked(course) {
     this.props.signals.course.opened({
       courseId: course.id.toString(),
-      sceneIndex: '0'
     });
   }
   renderCourses() {
@@ -23,7 +22,6 @@ class CoursesList extends React.Component {
           key={index}
           onClick={() => this.courseClicked(course)}>
           <span className={styles.courseName}>{course.name}</span>
-          <span className={styles.scenes}>Scener: {course.scenes.length}</span>
         </div>
       );
     });
@@ -31,7 +29,7 @@ class CoursesList extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        <h1 className={styles.title}>Kurs</h1>
+        <h1 className={styles.title}>Bin</h1>
         <div className={styles.coursesWrapper}>
           {this.renderCourses()}
         </div>

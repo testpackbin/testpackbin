@@ -10,7 +10,7 @@ export default [
       redirectToLastCourse
     ],
     error: [
-      set('state:/home.loginErrorMessage', 'Innlogging feilet! Har du tastet riktig e-post og passord?')
+      set('state:/home.loginErrorMessage', 'Log in failed! Have you entered the correct email and password?')
     ]
   },
   set('state:/home.isLoggingIn', false)

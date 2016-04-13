@@ -2,7 +2,7 @@ import Controller from 'cerebral';
 import Model from 'cerebral-model-baobab';
 
 const model = Model({
-  currentPage: 'course',
+  currentPage: 'home',
   snackbar: {
     show: false,
     text: '',

@@ -4,7 +4,7 @@ function register({services, output, state}) {
   const repeatedPassword = state.get('home.registerForm.repeatedPassword');
 
   if (password !== repeatedPassword) {
-    output.error({message: 'Passordene er ikke like.'});
+    output.error({message: 'Passwords do not match.'});
   } else {
     services.http.post('/API/registerSignup', {
       email: email,
@@ -14,10 +14,10 @@ function register({services, output, state}) {
       output.success();
     })
     .catch((e) => {
-      let errorMessage = 'Registrering feilet.';
+      let errorMessage = 'Failed signing up.';
 
       if (e.message === 'USER_EXISTS') {
-        errorMessage = 'Brukeren finnes allerede.';
+        errorMessage = 'User already exists.';
       }
       output.error({message: errorMessage});
     });

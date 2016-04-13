@@ -1,4 +1,4 @@
-import showSnackbar from 'common/factories/actions/showSnackbar.js';
+import showSnackbar from 'common/factories/actions/showSnackbar';
 
 function createSession(name, chain) {
   function createSessionId({services, output}) {

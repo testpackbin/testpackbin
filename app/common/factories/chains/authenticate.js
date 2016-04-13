@@ -10,7 +10,7 @@ export default function(chain) {
     condition(['user', 'isLoggedIn']), {
       true: chain,
       false: [
-        showSnackbar('Henter litt informasjon...'),
+        showSnackbar('Retrieving your data...'),
         set(['user', 'isLoading'], true),
         [
           get('/API/user', 'user'), {
@@ -19,7 +19,7 @@ export default function(chain) {
             ].concat(chain),
             error: [
               set(['user', 'isLoading'], false),
-              showSnackbar('Fant ikke brukeren!'),
+              showSnackbar('User not found!'),
               redirect('/')
             ]
           }

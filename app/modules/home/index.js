@@ -1,5 +1,4 @@
 import opened from './signals/opened';
-import testKodeboksenClicked from './signals/testKodeboksenClicked';
 import startCourseClicked from './signals/startCourseClicked';
 import restartCourseClicked from './signals/restartCourseClicked';
 import continueCourseClicked from './signals/continueCourseClicked';
@@ -28,7 +27,6 @@ export default () => {
 
     module.addSignals({
       opened,
-      testKodeboksenClicked,
       startCourseClicked,
       restartCourseClicked,
       continueCourseClicked,

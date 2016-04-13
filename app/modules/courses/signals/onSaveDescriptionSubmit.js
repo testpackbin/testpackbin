@@ -4,7 +4,7 @@ import createDescription from '../actions/createDescription';
 import showSnackbar from 'common/factories/actions/showSnackbar.js';
 import resetNewDescriptionFields from '../actions/resetNewDescriptionFields';
 import updateDescription from '../actions/updateDescription';
-import getAndSetDescriptions from 'modules/descriptions/chains/getAndSetDescriptions';
+
 
 const whenSelectedDescription = when('state:/courses.selectedDescription', {updated: when.truthy, created: when.otherwise});
 
@@ -14,18 +14,17 @@ export default [
     created: [
       createDescription, {
         success: [],
-        error: [showSnackbar('Opprettelse av beskrivelse feilet!')]
+        error: [showSnackbar('Cannot create description!')]
       }
     ],
     updated: [
       updateDescription, {
         success: [],
-        error: [showSnackbar('Oppdatering av beskrivelse feilet!')]
+        error: [showSnackbar('Cannot update description!')]
       }
     ]
   },
-  ...getAndSetDescriptions,
   resetNewDescriptionFields,
   set('state:/courses.isSavingDescription', false),
-  showSnackbar('Beskrivelsen er lagret')
+  showSnackbar('Description saved')
 ];

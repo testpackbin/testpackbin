@@ -4,6 +4,6 @@ import removeDescriptionFromList from '../actions/removeDescriptionFromList';
 export default [
   deleteDescription, {
     success: [removeDescriptionFromList],
-    error: [showSnackbar('Det oppstod en feil ved henting av beskrivelser!')]
+    error: [showSnackbar('Error while retrieving descriptions!')]
   }
 ];
