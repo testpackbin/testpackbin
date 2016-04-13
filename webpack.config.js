@@ -1,4 +1,17 @@
+var path = require('path');
+var webpack = require('webpack');
+
 module.exports = {
+  devtool: 'eval-source-map',
+  entry: [
+    'webpack-hot-middleware/client?reload=true',
+    path.resolve('app', 'main.js')
+  ],
+  output: {
+    path: path.resolve('public'),
+    filename: 'bundle.js',
+    publicPath: '/'
+  },
   module: {
     loaders: [{
       test: /\.css?$/,

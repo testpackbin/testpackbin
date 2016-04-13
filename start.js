@@ -1,17 +1,7 @@
-var app = require('./server'),
-    http = require('http');
+var server = require('./server');
 
-var server = http.createServer(app);
+console.log('Running TestPackBin version:', require('./package.json').version);
 
-server.listen(4000);
+server.server.on('request', server.app);
 
-if (module.hot) {
-
-  // This will handle HMR and reload the server
-  module.hot.accept('./server', function() {
-    server.removeListener('request', app);
-    app = require('./server');
-    server.on('request', app);
-    console.log('Server reloaded!');
-  });
-}
+server.server.listen(3000);
