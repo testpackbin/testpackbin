@@ -1,55 +1,24 @@
 {
   "name": "testpackbin",
-  "version": "0.0.1",
-  "description": "Testable bins expansion for WebpackBin service",
-  "main": "server.js",
+  "version": "0.10.0",
+  "description": "An extension of the excellent webpackbin",
+  "main": "start.js",
+  "dependencies": {},
+  "devDependencies": {
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.10.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/testpackbin/testpackbin.git"
+    "url": "git+https://github.com/testpackbin/testpackbin.git"
   },
-  "keywords": [
-    "express",
-    "webpack",
-    "node",
-    "cerebral"
-  ],
-  "author": "Christian Alfoni",
-  "license": "MIT",
+  "author": "Andrew Kemp, Brett Caudill, Kirill Prostyakov, Zach Parduhn, Zac Anger",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/testpackbin/testpackbin/issues"
   },
-  "homepage": "https://github.com/testpackbin/testpackbin.git",
-  "scripts": {
-    "start": "concurrently \"npm run client\" \"npm run server\"",
-    "client": "cross-env kotatsu serve app/main.jsx --index index.html --config webpack.config.js --devtool eval-source-map --proxy /api http://localhost:4000/api",
-    "server": "cross-env kotatsu start start.js --source-maps",
-    "build": "concurrently \"npm run client:build\" \"npm run server:build\"",
-    "client:build": "cross-env NODE_ENV=production kotatsu build client app/main.js --config webpack.production.config.js --minify -o dist/client_bundle.js ",
-    "server:build": "cross-env NODE_ENV=production kotatsu build server start.js --config webpack.production.config.js --minify -o dist/server_bundle.js "
-  },
-  "dependencies": {
-    "baobab": "^2.3.3",
-    "cerebral": "^0.33.24",
-    "cerebral-addons": "^0.4.10",
-    "cerebral-model-baobab": "^0.4.7",
-    "cerebral-module-devtools": "^0.5.3",
-    "cerebral-module-http": "^0.1.1",
-    "cerebral-module-recorder": "^0.5.7",
-    "cerebral-module-router": "^0.12.5",
-    "cerebral-view-react": "^0.11.6",
-    "express": "^4.13.4",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7"
-  },
-  "devDependencies": {
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-preset-react": "^6.5.0",
-    "babel-preset-react-hmre": "^1.1.0",
-    "babel-preset-stage-0": "^6.5.0",
-    "concurrently": "^2.0.0",
-    "cross-env": "^1.0.7",
-    "css-loader": "^0.23.1",
-    "kotatsu": "^0.10.0",
-    "style-loader": "^0.13.0"
-  }
+  "homepage": "https://github.com/testpackbin/testpackbin#readme"
 }
