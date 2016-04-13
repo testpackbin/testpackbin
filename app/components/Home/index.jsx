@@ -45,13 +45,14 @@ class Home extends React.Component {
           <div className={styles.columnContent}>
             <h2 className={styles.columnTitle}>TestPack</h2>
             {
-              Object.keys(this.props.assignmentsSolved).length ?
+              //Object.keys(this.props.assignmentsSolved).length ?
                 <div>
                   <button className={styles.submitButton} onClick={() => this.props.signals.home.continueCourseClicked()}>Continue</button>
                   <button className={styles.submitButton} onClick={() => this.props.signals.home.restartCourseClicked()}>Start anew</button>
+                  <button className={styles.submitButton} onClick={() => this.props.signals.home.shortCutClicked()}>
+                   Bypass security
+                  </button>
                 </div>
-              : null
-
             }
           </div>
         </div>
