@@ -12,11 +12,11 @@ const model = Model({
     isLoggedIn: false,
     isLoading: false,
     isAdmin: false,
-    forceUser: false,
-    assignmentsSolved: {}
+    forceUser: false
   },
   session: {
-    sessionId: null
+    sessionId: null,
+    jwt: ''
   }
 });
 

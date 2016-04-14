@@ -1,13 +1,15 @@
 import set from 'cerebral-addons/set';
+import copy from 'cerebral-addons/copy';
 import login from '../actions/login';
-import redirectToLastCourse from '../actions/redirectToLastCourse';
+import redirectToCourses from '../actions/redirectToCourses';
 
 export default [
   set('state:/home.isLoggingIn', true),
   set('state:/home.loginErrorMessage', null),
   login, {
     success: [
-      redirectToLastCourse
+      copy('input:/jwt', 'state:/session.jwt'),
+      redirectToCourses
     ],
     error: [
       set('state:/home.loginErrorMessage', 'Log in failed! Have you entered the correct email and password?')

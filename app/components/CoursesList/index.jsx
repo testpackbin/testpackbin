@@ -10,9 +10,9 @@ class CoursesList extends React.Component {
     super();
   }
   courseClicked(course) {
-    this.props.signals.course.opened({
+    /*this.props.signals.course.opened({
       courseId: course.id.toString(),
-    });
+    });*/
   }
   renderCourses() {
     return this.props.courses.map((course, index) => {

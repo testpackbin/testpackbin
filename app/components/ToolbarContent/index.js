@@ -6,23 +6,22 @@ import icons from 'common/icons.css';
 import styles from './styles.css';
 
 @Cerebral({
-  showNewCourse: 'courses.showNewCourse',
-  showDescriptions: 'courses.showDescriptions'
+
 })
 class ToolbarContent extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        <ToolbarTitle title="Kurs"/>
+        <ToolbarTitle title="Course"/>
         <ToolbarButtonPopover
           icon={icons.addFile}
-          onClick={() => this.props.signals.courses.newCourseClicked()}
-          show={this.props.showNewCourse}>
+          onClick={() => {}}
+          show={false}>
         </ToolbarButtonPopover>
         <ToolbarButtonPopover
           icon={icons.addAssignment}
-          onClick={() => this.props.signals.courses.showDescriptionsClicked()}
-          show={this.props.showDescriptions}>
+          onClick={() => {}}
+          show={false}>
         </ToolbarButtonPopover>
       </div>
     );
