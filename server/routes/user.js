@@ -37,7 +37,7 @@ function getUserScheme(req) {
   else if(req.body.email) {
     username = req.body.email;
     type = 'email';
-    userSearch = { email: username };
+    userSearch = { username: username };
   }
 
   return {
@@ -70,7 +70,12 @@ app.post('/api/users/create', function(req, res) {
 
     profile = _.pick(req.body, userScheme.type, 'password', 'extra');
 
-    return new User(profile).save()
+    return new User({
+      username: profile.username || profile.email,
+      password: profile.password
+    }).save((e, r) => {
+      if (e) console.log(e);
+    })
   })
   .then(user => {
     res.status(201).send({
@@ -93,17 +98,17 @@ app.post('/api/sessions/create', function(req, res) {
     return res.status(400).send(errorMsg.noPair);
   }
 
-  var user = _.find(users, userScheme.userSearch);
+  User.findOne(userScheme.userSearch, (e, user) => {
+    if (!user) {
+      return res.status(401).send(errorMsg.noMatch);
+    }
 
-  if (!user) {
-    return res.status(401).send(errorMsg.noMatch);
-  }
+    if (user.password !== req.body.password) {
+      return res.status(401).send(errorMsg.noMatch);
+    }
 
-  if (user.password !== req.body.password) {
-    return res.status(401).send(errorMsg.noMatch);
-  }
-
-  res.status(201).send({
-    id_token: createToken(user)
-  });
+    res.status(201).send({
+      id_token: createToken(user)
+    })
+  })
 });

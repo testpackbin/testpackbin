@@ -101,4 +101,21 @@ describe('userCtrl', () => {
       })
     })
   })
+
+  it('should login a user', (done) => {
+    const testUser = fake.userAndSave();
+
+    testUser.then(testUser => {
+      chai.request(server)
+      .post('/api/sessions/create')
+      .send({username: testUser.username, password: testUser.password})
+      .end((e, r) => {
+        if (e) throw e;
+
+        r.should.have.status(201);
+        r.body.id_token.should.be.ok;
+        done();
+      })
+    })
+  })
 })
