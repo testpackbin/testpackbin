@@ -44,10 +44,10 @@
     "dotenv": "^2.0.0",
     "errorhandler": "^1.4.3",
     "express": "^4.13.4",
-    "mongoose": "^4.4.12",
     "express-jwt": "^3.3.0",
     "jsonwebtoken": "^5.7.0",
     "lodash": "^4.11.0",
+    "mongoose": "^4.4.12",
     "morgan": "^1.7.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7"
