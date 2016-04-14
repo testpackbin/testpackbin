@@ -8,7 +8,7 @@ export default [
   set('state:/home.registerErrorMessage', false),
   register, {
     success: [
-      redirect('/home')
+      redirect('/courses')
     ],
     error: [
       setRegisterErrorMessage
