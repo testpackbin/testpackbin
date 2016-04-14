@@ -31,6 +31,8 @@ app.put('/api/bins', bins.update);
 // Users
 app.post('/api/login', user.login);
 app.post('/api/users', user.create);
+app.put('/api/users', user.update);
+app.get('/api/users/:id', user.show);
 
 dotenv.load();
 
