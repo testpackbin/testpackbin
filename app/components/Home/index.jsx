@@ -2,8 +2,8 @@ import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
 
 let elements = null;
-// let styles = null;
-import styles from './styles.css'; // TODO: Remove this;
+
+import styles from './styles.css';
 
 @Cerebral({
   assignmentsSolved: 'user.assignmentsSolved',
@@ -22,7 +22,7 @@ class Home extends React.Component {
   componentDidMount() {
     require.ensure([], (require) => {
       elements = require('common/elements.css');
-      // styles = require('./Home.css');
+
       this.setState({
         canRender: true
       });
@@ -45,13 +45,11 @@ class Home extends React.Component {
           <div className={styles.columnContent}>
             <h2 className={styles.columnTitle}>TestPack</h2>
             {
-              Object.keys(this.props.assignmentsSolved).length ?
                 <div>
-                  <button className={styles.submitButton} onClick={() => this.props.signals.home.continueCourseClicked()}>Continue</button>
-                  <button className={styles.submitButton} onClick={() => this.props.signals.home.restartCourseClicked()}>Start anew</button>
+                  <button className={styles.submitButton} onClick={() => this.props.signals.home.shortCutClicked()}>
+                   Bypass security
+                  </button>
                 </div>
-              : null
-
             }
           </div>
         </div>

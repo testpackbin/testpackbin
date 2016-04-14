@@ -6,7 +6,7 @@ function register({services, output, state}) {
   if (password !== repeatedPassword) {
     output.error({message: 'Passwords do not match.'});
   } else {
-    services.http.post('/API/registerSignup', {
+    services.http.post('/api/users/create', {
       email: email,
       password: password
     })

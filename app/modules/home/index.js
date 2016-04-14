@@ -1,10 +1,8 @@
 import opened from './signals/opened';
-import startCourseClicked from './signals/startCourseClicked';
-import restartCourseClicked from './signals/restartCourseClicked';
-import continueCourseClicked from './signals/continueCourseClicked';
 import registerFormSubmitted from './signals/registerFormSubmitted';
 import loginFormSubmitted from './signals/loginFormSubmitted';
 import inputChange from './signals/inputChange';
+import shortCutClicked from './signals/shortCutClicked';
 
 export default () => {
   return (module) => {
@@ -27,9 +25,7 @@ export default () => {
 
     module.addSignals({
       opened,
-      startCourseClicked,
-      restartCourseClicked,
-      continueCourseClicked,
+      shortCutClicked,
       registerFormSubmitted,
       loginFormSubmitted,
       inputChange: {

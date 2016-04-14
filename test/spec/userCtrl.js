@@ -25,7 +25,7 @@ describe('userCtrl', () => {
     })
   })
 
-  it.only('should make a user', (done) => {
+  it('should make a user', (done) => {
     const testUser = fake.user();
 
     chai.request(server)
@@ -37,9 +37,9 @@ describe('userCtrl', () => {
 
       r.body.should.be.a('object');
       done()
-      // return User.findById(r.body._id, (e, user) => {
+      return User.findById(r.body._id, (e, user) => {
 
-      //})
+      })
     })
     // .then(user => {
     //   user.username.should.equal(testUser.username);
