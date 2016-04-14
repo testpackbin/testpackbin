@@ -7,7 +7,7 @@ function login({state, services, output}) {
     password: password
   })
     .then((response) => {
-      output.success();//jwt: response.result
+      output.success({jwt: response.result.id_token});
     }).catch(() => {
       output.error();
     });

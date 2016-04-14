@@ -1,14 +1,14 @@
 import set from 'cerebral-addons/set';
+import copy from 'cerebral-addons/copy';
 import login from '../actions/login';
 import redirectToCourses from '../actions/redirectToCourses';
-import setSessionToken from '../actions/setSessionToken';
 
 export default [
   set('state:/home.isLoggingIn', true),
   set('state:/home.loginErrorMessage', null),
   login, {
     success: [
-      setSessionToken,
+      copy('input:/jwt', 'state:/session.jwt'),
       redirectToCourses
     ],
     error: [
