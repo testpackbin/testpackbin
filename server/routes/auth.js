@@ -8,9 +8,9 @@ var jwtCheck = jwt({
   secret: config.secret
 });
 
-/*app.use('/api/protected', jwtCheck);
+app.use('/api/bins', jwtCheck);
 
-app.get('/api/protected/random-quote', function(req, res) {
-  res.status(200).send(quoter.getRandomOne());
+app.get('/api/bins', function(req, res) {
+  var mockData = [{name:"aaafff", id: "aaaarrr"}, {name:"aaaaaggg", id: "aaaahhhh"}];
+  res.status(200).send(mockData);
 });
-*/
