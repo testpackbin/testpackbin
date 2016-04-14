@@ -1,7 +1,11 @@
+'use strict'
+
 var express = require('express'),
     _       = require('lodash'),
     config  = require('../config'),
-    jwt     = require('jsonwebtoken');
+    jwt     = require('jsonwebtoken'),
+    User    = require('../models/User'),
+    users   = require('../controllers/userCtrl');
 
 var app = module.exports = express.Router();
 
@@ -18,7 +22,7 @@ function createToken(user) {
 }
 
 function getUserScheme(req) {
-  
+
   var username;
   var type;
   var userSearch = {};
@@ -33,7 +37,7 @@ function getUserScheme(req) {
   else if(req.body.email) {
     username = req.body.email;
     type = 'email';
-    userSearch = { email: username };
+    userSearch = { username: username };
   }
 
   return {
@@ -50,25 +54,40 @@ var errorMsg = {
 };
 
 app.post('/api/users/create', function(req, res) {
-  
-  var userScheme = getUserScheme(req);  
+
+  var userScheme = getUserScheme(req);
 
   if (!userScheme.username || !req.body.password) {
     return res.status(400).send(errorMsg.noPair);
   }
 
-  if (_.find(users, userScheme.userSearch)) {
-   return res.status(400).send(errorMsg.exists);
-  }
+  let profile;
+  User.findOne(userScheme.userSearch, (e, user) => {
+    if (user) {
 
-  var profile = _.pick(req.body, userScheme.type, 'password', 'extra');
-  profile.id = _.max(users, 'id').id + 1;
+     return res.status(400).send(errorMsg.exists);
+    }
 
-  users.push(profile);
+    profile = _.pick(req.body, userScheme.type, 'password', 'extra');
 
-  res.status(201).send({
-    id_token: createToken(profile)
-  });
+    return new User({
+      username: profile.username || profile.email,
+      password: profile.password
+    }).save((e, r) => {
+      if (e) console.log(e);
+    })
+  })
+  .then(user => {
+    res.status(201).send({
+      id_token: createToken(profile)
+    });
+  })
+
+
+
+
+
+
 });
 
 app.post('/api/sessions/create', function(req, res) {
@@ -79,17 +98,17 @@ app.post('/api/sessions/create', function(req, res) {
     return res.status(400).send(errorMsg.noPair);
   }
 
-  var user = _.find(users, userScheme.userSearch);
-  
-  if (!user) {
-    return res.status(401).send(errorMsg.noMatch);
-  }
+  User.findOne(userScheme.userSearch, (e, user) => {
+    if (!user) {
+      return res.status(401).send(errorMsg.noMatch);
+    }
 
-  if (user.password !== req.body.password) {
-    return res.status(401).send(errorMsg.noMatch);
-  }
+    if (user.password !== req.body.password) {
+      return res.status(401).send(errorMsg.noMatch);
+    }
 
-  res.status(201).send({
-    id_token: createToken(user)
-  });
+    res.status(201).send({
+      id_token: createToken(user)
+    })
+  })
 });

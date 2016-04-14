@@ -26,5 +26,16 @@ module.exports = {
         res.sendStatus(200);
       }
     })
+  },
+
+  show(req, res) {
+    User.findById(req.params.id, (e, user) => {
+      if (e) {
+        console.log(e);
+        res.sendStatus(500);
+      } else {
+        res.status(200).send(user);
+      }
+    })
   }
 };
