@@ -6,6 +6,7 @@ let Toolbar = null;
 let styles = null;
 let CoursesList = null;
 
+
 @Cerebral({
   isLoading: 'courses.isLoading'
 })
@@ -18,9 +19,9 @@ class Courses extends React.Component {
   }
   componentDidMount() {
     require.ensure([], (require) => {
-      Toolbar = require('common/components/Toolbar');
-      ToolbarContent = require('../ToolbarContent');
-      CoursesList = require('../CoursesList');
+      Toolbar = require('common/components/Toolbar').default;
+      ToolbarContent = require('../ToolbarContent').default;
+      CoursesList = require('../CoursesList').default;
       styles = require('./styles.css');
       this.setState({
         canRender: true
@@ -45,7 +46,7 @@ class Courses extends React.Component {
         <div>
           <div className={this.props.isLoading ? styles.overlayVisible : styles.overlay}></div>
           {this.props.isLoading ? null : this.renderCourses()}
-        </div>
+       </div>
       );
     }
 
