@@ -1,39 +1,41 @@
 import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
 import styles from './styles.css';
+import CourseButton from 'common/components/CourseButton'
 
 @Cerebral({
-  courses: 'courses.courses'
+  courses: 'courses.courses',
+  display: ['courses', 'display'],
+  // displayNone: ['courses', 'displayNone']
 })
 class CoursesList extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
-  courseClicked(course) {
-    /*this.props.signals.course.opened({
-      courseId: course.id.toString(),
-    });*/
-  }
-  renderCourses() {
-    return this.props.courses.map((course, index) => {
-      return (
-        <div
-          className={styles.courseWrapper}
-          key={index}
-          onClick={() => this.courseClicked(course)}>
-          <span className={styles.courseName}>{course.name}</span>
-        </div>
-      );
-    });
-  }
+
   render() {
+    const courses = this.props.courses;
+    const signals = this.props.signals.courses;
     return (
-      <div className={styles.wrapper}>
-        <h1 className={styles.title}>Bin</h1>
-        <div className={styles.coursesWrapper}>
-          {this.renderCourses()}
-        </div>
+
+          <div >
+          {courses.map((course, index) => {
+            return (
+              <div key={index}className={styles.courseWrapper}>
+                <div className={styles.header}>
+                  <span>{course.name}</span>
+
+                </div>
+                <div style={{display: this.props.display}}>
+                  <div>Details...</div>
+                </div>
+              <CourseButton course={course}/>
+              </div>
+              )
+            })}
+
       </div>
+
     );
   }
 }

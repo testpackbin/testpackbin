@@ -1,5 +1,6 @@
 import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
+import ToolbarButton from 'common/components/ToolbarButton';
 import ToolbarButtonPopover from 'common/components/ToolbarButtonPopover';
 import ToolbarTitle from 'common/components/ToolbarTitle';
 import icons from 'common/icons.css';
@@ -13,11 +14,12 @@ class ToolbarContent extends React.Component {
     return (
       <div className={styles.wrapper}>
         <ToolbarTitle title="Course"/>
-        <ToolbarButtonPopover
+        <ToolbarButton
           icon={icons.addFile}
           onClick={() => {}}
+          title={'Ben'}
           show={false}>
-        </ToolbarButtonPopover>
+        </ToolbarButton>
         <ToolbarButtonPopover
           icon={icons.addAssignment}
           onClick={() => {}}
