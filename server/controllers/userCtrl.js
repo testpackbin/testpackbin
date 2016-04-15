@@ -18,7 +18,7 @@ module.exports = {
   },
 
   update(req, res) {
-    User.findByIdAndUpdate(req.body._id, {$set: req.body}, (err, r) => {
+    User.findByIdAndUpdate(req.body._id || req.params.id, {$set: req.body}, (err, r) => {
       if (err) {
         console.log(err);
         res.sendStatus(500);

@@ -48,8 +48,8 @@ describe('userCtrl', () => {
 
     testUser.then(testUser => {
       chai.request(server)
-      .put('/api/users')
-      .send({username: "Steve", _id: testUser._id})
+      .put('/api/users/' + testUser._id)
+      .send({username: "Steve"})
       .end((e, r) => {
         if (e) throw e;
 
