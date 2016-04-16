@@ -22,14 +22,16 @@
   "scripts": {
     "test": "NODE_ENV=test mocha test/spec/",
     "start": "concurrently \"npm run client\" \"npm run server\"",
-    "client": "cross-env kotatsu serve app/main.jsx --index index.html --config webpack.config.js --devtool eval-source-map --proxy /api http://localhost:4000/api",
+    "client": "cross-env kotatsu serve app/main.jsx --port 3000 --index index.html --config webpack.config.js --devtool eval-source-map --proxy /api http://localhost:3999/api",
     "server": "cross-env kotatsu start start.js --source-maps",
     "build": "concurrently \"npm run client:build\" \"npm run server:build\"",
     "client:build": "cross-env NODE_ENV=production kotatsu build client app/main.js --config webpack.production.config.js --minify -o dist/client_bundle.js ",
     "server:build": "cross-env NODE_ENV=production kotatsu build server start.js --config webpack.production.config.js --minify -o dist/server_bundle.js "
   },
   "dependencies": {
+    "babel-core": "^6.7.6",
     "baobab": "^2.3.3",
+    "bluebird": "^3.3.5",
     "body-parser": "^1.15.0",
     "cerebral": "^0.33.24",
     "cerebral-addons": "^0.4.10",
@@ -46,7 +48,7 @@
     "express": "^4.13.4",
     "express-jwt": "^3.3.0",
     "jsonwebtoken": "^5.7.0",
-    "lodash": "^4.11.0",
+    "lodash": "^4.11.1",
     "mongoose": "^4.4.12",
     "morgan": "^1.7.0",
     "react": "^0.14.7",

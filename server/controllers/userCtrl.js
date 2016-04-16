@@ -1,4 +1,7 @@
+'use strict'
+
 const User = require('../models/User');
+const Promise = require('bluebird');
 
 module.exports = {
   login(req, res) {
@@ -18,14 +21,21 @@ module.exports = {
   },
 
   update(req, res) {
-    User.findByIdAndUpdate(req.body._id, {$set: req.body}, (err, r) => {
-      if (err) {
-        console.log(err);
-        res.sendStatus(500);
-      } else {
-        res.sendStatus(200);
-      }
+
+    console.log(`Updating user ${req.body.user}`);
+    console.log('Request is', req.body);
+    let update;
+    if (req.body.course) {
+      update = User.findByIdAndUpdateCourses(req.body.user || req.params.id, req.body)
+    } else {
+      update = User.findByIdAndUpdate(req.body.user || req.params.id, {$set: req.body})
+    }
+
+    update.then(user => {
+      res.sendStatus(200)
     })
+    .catch(err => res.status(500).send(err))
+
   },
 
   show(req, res) {
