@@ -22,6 +22,8 @@ module.exports = {
 
   update(req, res) {
 
+    console.log(`Updating user ${req.body.user}`);
+    console.log('Request is', req.body);
     let update;
     if (req.body.course) {
       update = User.findByIdAndUpdateCourses(req.body.user || req.params.id, req.body)
