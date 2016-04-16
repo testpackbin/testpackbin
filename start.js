@@ -4,7 +4,7 @@ var app = require('./server'),
 process.env.NODE_ENV = 'development';
 var server = http.createServer(app);
 
-server.listen(4000);
+server.listen(3500);
 
 if (module.hot) {
 
