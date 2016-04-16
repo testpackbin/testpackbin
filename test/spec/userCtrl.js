@@ -7,7 +7,9 @@ const server = require('../../server/index'),
       should = chai.should(),
       Bin = require('../../server/models/Bin'),
       User = require('../../server/models/User'),
-      fake = require('../helpers/faker');
+      fake = require('../helpers/faker'),
+      _ = require('lodash'),
+      Promise = require('bluebird');
 
 chai.use(chaiHttp);
 
@@ -115,6 +117,41 @@ describe('userCtrl', () => {
         r.should.have.status(201);
         r.body.id_token.should.be.ok;
         done();
+      })
+    })
+  })
+
+  it('should update a user bin', (done) => {
+    Promise.all([
+      fake.userAndSave(),
+      fake.binAndSave(),
+      fake.binAndSave()
+    ])
+    .spread((testUser, course, bin) => {
+      chai.request(server)
+      .put('/api/users/' + testUser._id)
+      .send({
+        user: testUser._id,
+        course: course._id,
+        bin: bin._id
+      })
+      .end((e, r) => {
+        if (e) throw e;
+
+        r.should.have.status(200);
+
+        User.findById(testUser._id, (e, user) => {
+          user.should.be.ok;
+          let test = user.courses.reduce(function(c) {
+            let target = _.find(c, {course: course._id})
+            return !target;
+          })
+
+          test.should.be.ok;
+          test.bin.should.equal(bin._id.toString())
+          done();
+
+        })
       })
     })
   })

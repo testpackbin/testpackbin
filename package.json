@@ -29,7 +29,9 @@
     "server:build": "cross-env NODE_ENV=production kotatsu build server start.js --config webpack.production.config.js --minify -o dist/server_bundle.js "
   },
   "dependencies": {
+    "babel-core": "^6.7.6",
     "baobab": "^2.3.3",
+    "bluebird": "^3.3.5",
     "body-parser": "^1.15.0",
     "cerebral": "^0.33.24",
     "cerebral-addons": "^0.4.10",
@@ -46,7 +48,7 @@
     "express": "^4.13.4",
     "express-jwt": "^3.3.0",
     "jsonwebtoken": "^5.7.0",
-    "lodash": "^4.11.0",
+    "lodash": "^4.11.1",
     "mongoose": "^4.4.12",
     "morgan": "^1.7.0",
     "react": "^0.14.7",
