@@ -1,6 +1,7 @@
 import set from 'cerebral-addons/set';
 import copy from 'cerebral-addons/copy';
 import login from '../actions/login';
+import saveUser from '../actions/saveUser';
 import redirectToCourses from '../actions/redirectToCourses';
 
 export default [
@@ -8,7 +9,7 @@ export default [
   set('state:/home.loginErrorMessage', null),
   login, {
     success: [
-      copy('input:/jwt', 'state:/session.jwt'),
+      saveUser,
       redirectToCourses
     ],
     error: [

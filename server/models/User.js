@@ -5,8 +5,8 @@ const userSchema = new mongoose.Schema({
   username: {type: String, required: true, unique: true},
   password: {type: String, required: true},
   courses: [{
-    courseId: {type: String, required: true},
-    binId: {type: String}
+    courseId: {type: ObjectId, ref: 'bins', required: true},
+    binId: {type: ObjectId, ref: 'bins'}
   }]
 })
 

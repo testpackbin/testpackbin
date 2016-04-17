@@ -6,13 +6,15 @@ function register({services, output, state}) {
   if (password !== repeatedPassword) {
     output.error({message: 'Passwords do not match.'});
   } else {
-    services.http.post('/api/users/create', {
+    services.http.post('/api/users', {
       email: email,
       password: password
     })
-    .then(() => {
-      output.success();
-    })
+    .then((response) => {
+      output.success({
+        jwt: response.result.id_token,
+        user: response.result.user
+      });
     .catch((e) => {
       let errorMessage = 'Failed signing up.';
 
