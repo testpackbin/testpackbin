@@ -2,12 +2,15 @@ function login({state, services, output}) {
   const email = state.get('home.loginForm.email');
   const password = state.get('home.loginForm.password');
 
-  services.http.post(`/api/sessions/create`, {
+  services.http.post(`/api/login`, {
     email: email,
     password: password
   })
     .then((response) => {
-      output.success({jwt: response.result.id_token});
+      output.success({
+        jwt: response.result.id_token,
+        user: response.result.user
+      });
     }).catch(() => {
       output.error();
     });
