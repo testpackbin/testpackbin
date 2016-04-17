@@ -3,7 +3,9 @@ import {Decorator as Cerebral} from 'cerebral-view-react';
 import styles from './styles.css';
 
 @Cerebral({
-  courses: 'courses.courses'
+  courses: 'user.user.courses',
+  jwt: 'session.jwt',
+  userId: 'user._id'
 })
 class CoursesList extends React.Component {
   constructor() {
@@ -21,7 +23,19 @@ class CoursesList extends React.Component {
           className={styles.courseWrapper}
           key={index}
           onClick={() => this.courseClicked(course)}>
-          <span className={styles.courseName}>{course.name}</span>
+          {
+            course.binId ? {
+              < a
+                className={styles.courseName}
+                href={`www.webpackbin.dev:4000?${course.binId.id}?jwt=${this.props.jwt}&user=${this.props.userId}`}
+              >Continue {course.binId.name}</a>
+            }:{
+              < a
+                className={styles.courseName}
+                href={`www.webpackbin.dev:4000/${course.courseId.id}?jwt=${this.props.jwt}&user=${this.props.userId}`}
+              >Start {course.courseId.name}</a>
+            }
+          }
         </div>
       );
     });
