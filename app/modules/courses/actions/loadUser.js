@@ -1,6 +1,6 @@
 function loadUser({output, services, input}) {
 
-  services.http.get('/api/user/'+input.userid, {headers:{'Authorization': 'Bearer ' + input.jwt}})
+  services.http.get('/api/user/'+input.user, {headers:{'Authorization': 'Bearer ' + input.jwt}})
     .then((response) => {
       output.success({user: response.result});
     })
@@ -9,7 +9,7 @@ function loadUser({output, services, input}) {
     });
 }
 
-loadCourses.async = true;
+loadUser.async = true;
 
 
 export default loadUser;

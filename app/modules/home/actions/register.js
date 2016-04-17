@@ -14,7 +14,7 @@ function register({services, output, state}) {
       output.success({
         jwt: response.result.id_token,
         user: response.result.user
-      });
+      })
     .catch((e) => {
       let errorMessage = 'Failed signing up.';
 
@@ -23,9 +23,10 @@ function register({services, output, state}) {
       }
       output.error({message: errorMessage});
     });
-  }
+  })
 }
-
+}
 register.async = true;
+
 
 export default register;

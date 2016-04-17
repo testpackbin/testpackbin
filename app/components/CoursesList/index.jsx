@@ -16,26 +16,28 @@ class CoursesList extends React.Component {
       courseId: course.id.toString(),
     });*/
   }
+
+
   renderCourses() {
+    let link, title;
+    if (course.binId) {
+      link = <a
+        href={`www.webpackbin.dev:4000?${course.binId.id}?jwt=${this.props.jwt}&user=${this.props.userId}`}
+      >Continue {course.binId.name}</a>
+    } else {
+      link = ''
+    }
+
+
     return this.props.courses.map((course, index) => {
       return (
         <div
           className={styles.courseWrapper}
           key={index}
           onClick={() => this.courseClicked(course)}>
-          {
-            course.binId ? {
-              < a
-                className={styles.courseName}
-                href={`www.webpackbin.dev:4000?${course.binId.id}?jwt=${this.props.jwt}&user=${this.props.userId}`}
-              >Continue {course.binId.name}</a>
-            }:{
-              < a
-                className={styles.courseName}
-                href={`www.webpackbin.dev:4000/${course.courseId.id}?jwt=${this.props.jwt}&user=${this.props.userId}`}
+            {link}
+              <a href={`www.webpackbin.dev:4000/${course.courseId.id}?jwt=${this.props.jwt}&user=${this.props.userId}`}
               >Start {course.courseId.name}</a>
-            }
-          }
         </div>
       );
     });

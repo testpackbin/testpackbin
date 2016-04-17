@@ -10,12 +10,12 @@ export default [
   setPage('courses'),
   set('state:/courses.isLoading', true),
   when('input:/jwt'), {
-    true: [
+    isTrue: [
       loadUser, {
       success: [setSession],
       error: [showSnackbar('Error retrieving the course!')]
     }],
-    false: [ ]
+    isFalse: [ ]
   },
   set('state:/courses.isLoading', false)
 ];
