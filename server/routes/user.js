@@ -1,8 +1,8 @@
 'use strict'
 const
   express = require('express'),
-  users = require('./controllers/userCtrl');
-  
+  users = require('../controllers/userCtrl');
+
 var app = module.exports = express.Router();
 
 app.post('/api/login', users.login);

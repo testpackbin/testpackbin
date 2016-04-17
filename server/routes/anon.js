@@ -1,6 +1,6 @@
 const
   express = require('express'),
-  bins = require('./controllers/binCtrl');
+  bins = require('../controllers/binCtrl');
 
 var app = module.exports = express.Router();
 // Bins
