@@ -1,3 +1,5 @@
+'use strict'
+
 const
   User = require('../models/User'),
   Bin = require('../models/Bin'),
@@ -46,32 +48,32 @@ module.exports = {
 
   create(req, res) {
     const userScheme = getUserScheme(req);
-    let newUserId;
+    let newUserId, profile;
     if (!userScheme.username || !req.body.password) {
       return res.status(400).send(errorMsg.noPair);
     }
 
-    User.findOne(userScheme.userSearch, (e, user) => {
+    User.findOne(userScheme.userSearch).exec()
+    .then(user => {
       if (user) {
 
       return res.status(400).send(errorMsg.exists);
       }
 
-      let profile = _.pick(req.body, userScheme.type, 'password', 'extra');
+      profile = _.pick(req.body, userScheme.type, 'password', 'extra');
 
-      return new User({
-        username: profile.username || profile.email,
-        password: profile.password
-      }).save((e, r) => {
-        if (e) console.log(e);
-      })
+
+      return new User(profile).save()
     })
     .then(user => {
       newUserId = user._id;
       return Bin.find({isBoilerplate: true}).exec();
     })
     .then(courses => {
-      const ids = courses.map(val => {console.log(val); return {courseId: val._id});
+      const ids = courses.map(val => {
+        return {courseId: val._id, binId: null}
+      })
+
       return User.findByIdAndUpdate(newUserId, { $set: {"courses": ids} });
     })
     .then(user => {
@@ -79,16 +81,21 @@ module.exports = {
       .populate({
         path: "courses.courseId",
         select: "-files -tests"
-      })
-    .exec()
-    .then( user => {
+      }).exec()
+    .then(user => {
+
+      console.log()
       res.status(201).send({
         user: user,
         id_token: createToken(profile)
       });
     })
-    .catch(err => res.send(err)); 
-  }
+    .catch(err => {
+      console.log(err);
+      res.send(err)
+    });
+  })
+},
 
 
   login(req, res) {
@@ -98,7 +105,6 @@ module.exports = {
     if (!userScheme.username || !req.body.password) {
       return res.status(400).send(errorMsg.noPair);
     }
-
     User.findOne(userScheme.userSearch)
     .populate({
       path: "courses.courseId",
@@ -109,7 +115,8 @@ module.exports = {
       select: "-files -tests"
     })
     .exec()
-    .then( (e, user) => {
+    .then(user => {
+
       if (!user) {
         return res.status(401).send(errorMsg.noMatch);
       }
@@ -117,36 +124,46 @@ module.exports = {
       if (user.password !== req.body.password) {
         return res.status(401).send(errorMsg.noMatch);
       }
-
       res.status(201).send({
         user: user,
         id_token: createToken(user)
       })
     })
-    .catch(err => res.send(err)); 
-  }
+    .catch(err => res.send(err));
+  },
 
 
 
   update(req, res) {
-    User.findByIdAndUpdate(req.body._id, {$set: req.body}, (err, r) => {
-      if (err) {
-        console.log(err);
-        res.sendStatus(500);
-      } else {
-        res.sendStatus(200);
-      }
+
+    let update;
+    if (req.body.course) {
+      update = User.findByIdAndUpdateCourses(req.body.user || req.params.id, req.body)
+    } else {
+      update = User.findByIdAndUpdate(req.body._id || req.params.id, {$set: req.body})
+    }
+
+    update.then(user => {
+      res.sendStatus(200)
     })
+    .catch(err => res.status(500).send(err))
+
   },
 
   show(req, res) {
-    User.findById(req.params.id, (e, user) => {
-      if (e) {
-        console.log(e);
-        res.sendStatus(500);
-      } else {
-        res.status(200).send(user);
-      }
+    return User.findById(req.params.id)
+    .populate({
+      path: "courses.courseId",
+      select: "-files -tests"
     })
+    .populate({
+      path: "courses.binId",
+      select: "-files -tests"
+    })
+    .exec()
+    .then(user => {
+      res.status(200).send(user);
+    })
+    .catch(err => res.status(500).send(err));
   }
 };
