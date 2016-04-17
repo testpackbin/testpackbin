@@ -26,7 +26,8 @@
     "server": "cross-env kotatsu start start.js --source-maps",
     "build": "concurrently \"npm run client:build\" \"npm run server:build\"",
     "client:build": "cross-env NODE_ENV=production kotatsu build client app/main.js --config webpack.production.config.js --minify -o dist/client_bundle.js ",
-    "server:build": "cross-env NODE_ENV=production kotatsu build server start.js --config webpack.production.config.js --minify -o dist/server_bundle.js "
+    "server:build": "cross-env NODE_ENV=production kotatsu build server start.js --config webpack.production.config.js --minify -o dist/server_bundle.js ",
+    "seed": "node seed.js"
   },
   "dependencies": {
     "babel-core": "^6.7.6",
