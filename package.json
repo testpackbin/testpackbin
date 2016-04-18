@@ -49,12 +49,7 @@
     "express": "^4.13.4",
     "express-jwt": "^3.3.0",
     "jsonwebtoken": "^5.7.0",
-<<<<<<< HEAD
-    "lodash": "^4.11.0",
-    "material-ui": "^0.14.4",
-=======
     "lodash": "^4.11.1",
->>>>>>> auth
     "mongoose": "^4.4.12",
     "morgan": "^1.7.0",
     "react": "^0.14.7",

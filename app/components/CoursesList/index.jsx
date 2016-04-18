@@ -18,30 +18,16 @@ class CoursesList extends React.Component {
     });*/
   }
 
-
-  renderCourses() {
-    return this.props.courses.map((course, index) => {
-      return (
-        <div
-          className={styles.courseWrapper}
-          key={index}
-          onClick={() => this.courseClicked(course)}>
-          {(course.binId) ?
-            <a href={`www.webpackbin.dev:4000?${course.binId.id}?jwt=${this.props.jwt}&user=${this.props.userId}`}>
-              Continue {course.binId.name}
-            </a>:<i></i>}
-              <a href={`www.webpackbin.dev:4000/${course.courseId.id}?jwt=${this.props.jwt}&user=${this.props.userId}`}>
-                Start {course.courseId.name}
-              </a>
-        </div>
-      );
-    });
-  }
-
   render() {
     return (
       <div>
-        {this.props.courses.map((course, index) => {return <CourseButton course={course} index={index}/>})}
+        {this.props.courses.map((course, index) => {
+          let links ={
+            binLink: (course.binId) ? `http://www.webpackbin.dev:4000?${course.binId.id}?jwt=${this.props.jwt}&user=${this.props.userId}`: '',
+            courseLink: `http://www.webpackbin.dev:4000/${course.courseId.id}?jwt=${this.props.jwt}&user=${this.props.userId}`
+          }
+          return <CourseButton key={index} course={course} links={links} index={index}/>})}
+
       </div>
     );
   }

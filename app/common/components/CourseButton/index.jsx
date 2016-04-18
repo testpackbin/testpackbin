@@ -15,9 +15,13 @@ class CourseButton extends React.Component {
     return (
       <div key={this.props.index} className={styles.courseWrapper}>
         <div className={styles.header}>
-          <span>{this.props.course.name}</span>
+          <span>{this.props.course.courseId.id}</span>
           <button onClick={() => this.setState({visible:!this.state.visible})}>More Details</button>
-          <div style={{display: this.state.visible ? 'none' : 'block'}}>Details...</div>
+          <div style={{display: this.state.visible ? 'none' : 'block'}}>
+            <button onClick={() => location.href = this.props.links.binLink}>Cont</button>
+            <br/>
+            <a href={this.props.links.courseLink}>Start</a>
+          </div>
         </div>
       </div>
     );
