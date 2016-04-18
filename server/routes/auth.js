@@ -12,4 +12,4 @@ var jwtCheck = jwt({
 
 // Users
 app.put('/api/users', jwtCheck, users.update);
-app.get('/api/users/:id', jwtCheck, users.show);
+app.get('/api/users/:id', users.show);
