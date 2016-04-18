@@ -35,6 +35,7 @@ Bin.remove({})
               "react" : true
           }
       },
+      "isBoilerplate": true,
       "files" : [
           {
               "name" : "index.html",
@@ -71,6 +72,7 @@ Bin.remove({})
         "es2015" : true
       }
     },
+    "isBoilerplate": true,
     "files" : [
       {
         "name": "index.html",
@@ -106,6 +108,7 @@ Bin.remove({})
         "es2015" : true
       }
     },
+    "isBoilerplate": false,
     "files" : [
       {
         "name": "index.html",

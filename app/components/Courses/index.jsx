@@ -8,6 +8,7 @@ let CoursesList = null;
 
 
 @Cerebral({
+  courses: 'user.user.courses',
   isLoading: 'courses.isLoading'
 })
 class Courses extends React.Component {

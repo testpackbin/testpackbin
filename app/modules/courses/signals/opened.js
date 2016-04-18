@@ -15,7 +15,7 @@ export default [
       success: [setSession],
       error: [showSnackbar('Error retrieving the course!')]
     }],
-    isFalse: [ ]
+    isFalse: [setSession]
   },
   set('state:/courses.isLoading', false)
 ];
