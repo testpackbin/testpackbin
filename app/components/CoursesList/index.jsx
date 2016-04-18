@@ -4,7 +4,7 @@ import styles from './styles.css';
 
 @Cerebral({
   jwt: 'session.jwt',
-  userId: 'user._id',
+  userId: 'user.user._id',
   courses: 'user.user.courses'
 })
 class CoursesList extends React.Component {
