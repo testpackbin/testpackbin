@@ -47,29 +47,37 @@ var errorMsg = {
 module.exports = {
 
   create(req, res) {
+    console.log('In user create');
     const userScheme = getUserScheme(req);
     let newUserId, profile;
     if (!userScheme.username || !req.body.password) {
+      console.log('No pair');
       return res.status(400).send(errorMsg.noPair);
     }
 
     User.findOne(userScheme.userSearch).exec()
     .then(user => {
       if (user) {
-
+        console.log('This user exists already!');
       return res.status(400).send(errorMsg.exists);
       }
 
       profile = _.pick(req.body, userScheme.type, 'password', 'extra');
 
-
-      return new User(profile).save()
+      console.log('Going to save user');
+      console.log('Profile is', profile);
+      return new User({
+        username: profile.email || profile.username,
+        password: profile.password
+      }).save()
     })
     .then(user => {
+      console.log('Getting here');
       newUserId = user._id;
       return Bin.find({isBoilerplate: true}).exec();
     })
     .then(courses => {
+      console.log('Then getting here');
       const ids = courses.map(val => {
         return {courseId: val._id, binId: null}
       })
@@ -77,6 +85,8 @@ module.exports = {
       return User.findByIdAndUpdate(newUserId, { $set: {"courses": ids} });
     })
     .then(user => {
+      console.log('Goign to find new user');
+      console.log(newUserId);
       return User.findById(newUserId)
       .populate({
         path: "courses.courseId",
@@ -85,6 +95,8 @@ module.exports = {
     .then(user => {
 
       console.log()
+      console.log('Sending back');
+      console.log(user);
       res.status(201).send({
         user: user,
         id_token: createToken(profile)

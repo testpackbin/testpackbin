@@ -11,5 +11,5 @@ var jwtCheck = jwt({
 });
 
 // Users
-app.put('/api/users', users.update);
-app.get('/api/users/:id', users.show);
+app.put('/api/users', jwtCheck, users.update);
+app.get('/api/users/:id', jwtCheck, users.show);
