@@ -1,14 +1,13 @@
-const express = require('express');
-const user = require('./controllers/userCtrl');
-const mongoose = require('mongoose');
-const config = require('../config');
-const bins = require('./controllers/binCtrl');
-const bodyParser = require('body-parser');
-const logger          = require('morgan'),
-      cors            = require('cors'),
-      http            = require('http'),
-      errorhandler    = require('errorhandler'),
-      dotenv          = require('dotenv');
+const
+  express = require('express'),
+  mongoose = require('mongoose'),
+  config = require('../config'),
+  bodyParser = require('body-parser'),
+  logger = require('morgan'),
+  cors = require('cors'),
+  http = require('http'),
+  errorhandler = require('errorhandler'),
+  dotenv = require('dotenv');
 
 const app = express();
 
@@ -24,13 +23,6 @@ mongoose.connect(config.mongoURI[process.env.NODE_ENV || 'development'], functio
 })
 
 
-// Bins
-app.post('/api/bins', bins.create);
-app.put('/api/bins', bins.update);
-
-// Users
-app.post('/api/login', user.login);
-app.post('/api/users', user.create);
 
 dotenv.load();
 

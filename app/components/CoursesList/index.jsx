@@ -4,11 +4,38 @@ import styles from './styles.css';
 import CourseButton from 'common/components/CourseButton'
 
 @Cerebral({
-  courses: 'courses.courses',
+  jwt: 'session.jwt',
+  userId: 'user.user._id',
+  courses: 'user.user.courses'
 })
 class CoursesList extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+  }
+  courseClicked(course) {
+    /*this.props.signals.course.opened({
+      courseId: course.id.toString(),
+    });*/
+  }
+
+
+  renderCourses() {
+    return this.props.courses.map((course, index) => {
+      return (
+        <div
+          className={styles.courseWrapper}
+          key={index}
+          onClick={() => this.courseClicked(course)}>
+          {(course.binId) ?
+            <a href={`www.webpackbin.dev:4000?${course.binId.id}?jwt=${this.props.jwt}&user=${this.props.userId}`}>
+              Continue {course.binId.name}
+            </a>:<i></i>}
+              <a href={`www.webpackbin.dev:4000/${course.courseId.id}?jwt=${this.props.jwt}&user=${this.props.userId}`}>
+                Start {course.courseId.name}
+              </a>
+        </div>
+      );
+    });
   }
 
   render() {

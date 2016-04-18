@@ -1,6 +1,7 @@
 import set from 'cerebral-addons/set';
 import register from '../actions/register';
 import redirect from 'common/factories/actions/redirect';
+import saveUser from '../actions/saveUser';
 import setRegisterErrorMessage from '../actions/registerErrorMessage';
 
 export default [
@@ -8,7 +9,8 @@ export default [
   set('state:/home.registerErrorMessage', false),
   register, {
     success: [
-      redirect('/home')
+      saveUser,
+      redirect('/courses')
     ],
     error: [
       setRegisterErrorMessage
