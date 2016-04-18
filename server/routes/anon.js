@@ -1,8 +1,8 @@
-var express = require('express');
+const
+  express = require('express'),
+  bins = require('../controllers/binCtrl');
 
 var app = module.exports = express.Router();
-
-/*app.get('/api/random-quote', function(req, res) {
-  res.status(200).send(quoter.getRandomOne());
-});
-*/
+// Bins
+app.post('/api/bins', bins.create);
+app.put('/api/bins', bins.update);

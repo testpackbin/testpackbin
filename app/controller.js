@@ -12,7 +12,8 @@ const model = Model({
     isLoggedIn: false,
     isLoading: false,
     isAdmin: false,
-    forceUser: false
+    forceUser: false,
+    user: {}
   },
   session: {
     sessionId: null,
