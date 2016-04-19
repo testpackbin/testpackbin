@@ -5,7 +5,7 @@ import DownArrow from 'react-icons/lib/fa/caret-down';
 import UpArrow from 'react-icons/lib/fa/caret-up';
 import Start from 'react-icons/lib/md/open-in-new';
 import Refresh from 'react-icons/lib/md/redo';
-
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 class CourseButton extends React.Component {
 
