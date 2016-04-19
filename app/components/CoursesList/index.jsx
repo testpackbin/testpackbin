@@ -12,15 +12,9 @@ class CoursesList extends React.Component {
   constructor() {
     super();
   }
-  courseClicked(course) {
-    /*this.props.signals.course.opened({
-      courseId: course.id.toString(),
-    });*/
-  }
-
   render() {
     return (
-      <div>
+      <div className={styles.wrapper}>
         {this.props.courses.map((course, index) => {
           let links ={
             binLink: (course.binId) ? `http://www.webpackbin.dev:4000?${course.binId.id}?jwt=${this.props.jwt}&user=${this.props.userId}`: '',

@@ -24,8 +24,9 @@ body{
   border: 1px solid #eb1e64;
 }
 
-.courseName {
-
+.wrapper{
+  width: 70%;
+  margin: 0 auto;
 }
 .scenes {
   font-size: 12px;
