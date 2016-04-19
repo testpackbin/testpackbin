@@ -11,6 +11,7 @@ import App from 'components/App/index';
 
 import Home from './modules/home';
 import Courses from './modules/courses';
+import Admin from './modules/admin';
 
 
 import showSnackbar from 'common/factories/actions/showSnackbar';
@@ -39,7 +40,7 @@ controller.addServices({
 controller.addModules({
   home: Home(),
   courses: Courses(),
-
+  admin: Admin(),
 
   http: Http(),
   recorder: Recorder({
@@ -58,6 +59,7 @@ controller.addModules({
     '/': 'home.opened',
     '/courses': 'courses.opened',
    // '/courses/:courseId': 'course.opened',
+   '/admin': 'admin.opened',
     '*': 'missingRouteRouted'
   }, {
     onlyHash: true,
