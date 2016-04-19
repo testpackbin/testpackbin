@@ -3,11 +3,13 @@ import {Decorator as Cerebral} from 'cerebral-view-react';
 
 import Home from 'components/Home';
 import Courses from 'components/Courses';
+import Admin from 'components/Admin';
 import styles from './styles.css';
 
 const pages = {
   'home': Home,
-  'courses': Courses
+  'courses': Courses,
+  'admin': Admin
 };
 
 @Cerebral({
