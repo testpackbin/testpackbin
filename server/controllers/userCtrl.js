@@ -50,13 +50,15 @@ module.exports = {
     const userScheme = getUserScheme(req);
     let newUserId, profile;
     if (!userScheme.username || !req.body.password) {
+      console.log('Sending headers');
       return res.status(400).send(errorMsg.noPair);
     }
 
     User.findOne(userScheme.userSearch).exec()
     .then(user => {
       if (user) {
-      return res.status(400).send(errorMsg.exists);
+        console.log('user exists! sending headers');
+      return errorMsg.exists;
       }
 
       profile = _.pick(req.body, userScheme.type, 'password', 'extra');
@@ -91,7 +93,7 @@ module.exports = {
       });
     })
     .catch(err => {
-      console.log(err);
+
       res.send(err)
     });
   })
