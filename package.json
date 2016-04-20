@@ -41,8 +41,8 @@
     "cerebral-module-http": "^0.1.1",
     "cerebral-module-recorder": "^0.5.7",
     "cerebral-module-router": "^0.12.5",
-    "cerebral-view-react": "^0.11.6",
     "cerebral-module-signal-store": "0.1.7",
+    "cerebral-view-react": "^0.11.6",
     "compression": "^1.6.1",
     "cors": "^2.7.1",
     "dotenv": "^2.0.0",
@@ -59,6 +59,7 @@
     "react-addons-css-transition-group": "^15.0.1",
     "react-dom": "^0.14.7",
     "react-icons": "^2.0.1",
+    "react-ink": "^5.0.2",
     "react-tap-event-plugin": "^0.2.0"
   },
   "devDependencies": {

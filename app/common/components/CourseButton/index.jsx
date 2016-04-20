@@ -5,7 +5,7 @@ import DownArrow from 'react-icons/lib/fa/caret-down';
 import UpArrow from 'react-icons/lib/fa/caret-up';
 import Start from 'react-icons/lib/md/open-in-new';
 import Refresh from 'react-icons/lib/md/redo';
-var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+import Ink from 'react-ink';
 
 class CourseButton extends React.Component {
 
@@ -18,7 +18,8 @@ class CourseButton extends React.Component {
     return (
       <div key={this.props.index} className={styles.courseWrapper}>
 
-        <div className={styles.header} onClick={() => this.setState({visible:!this.state.visible})}>
+        <div style={{ position: "relative" }} className={styles.header} onClick={() => this.setState({visible:!this.state.visible})}>
+          <Ink />
           <span className={styles.title}>{this.props.course.courseId.id}</span>
           <span className={styles.showMore} >{(this.state.visible)?<DownArrow className={styles.arrows}/>:<UpArrow className={styles.arrows}/>}</span>
         </div>

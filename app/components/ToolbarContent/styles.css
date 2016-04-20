@@ -15,6 +15,9 @@ li{
   padding-bottom: 6px;
   margin-left: -4px;
 }
+.signOut:hover{
+  color: white;
+}
 .button {
   background: transparent;
   border: 0;

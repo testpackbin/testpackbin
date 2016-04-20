@@ -25,7 +25,7 @@ class ToolbarContent extends React.Component {
     return (
       <div className={styles.wrapper}>
         <span className={styles.title}><AngleLeft className={styles.arrow}/>TESTPACKBIN /<AngleRight className={styles.arrow}/></span>
-      <div className={styles.button} onClick={() => this.setState({visible:!this.state.visible})} onMouseLeave={() => this.setState({visible:!this.state.visible})}>
+      <div className={styles.button} onClick={() => this.setState({visible:!this.state.visible})} onMouseLeave={() => this.setState({visible:'none'})}>
           <User className={styles.icon}/>
           {this.props.userId}
           <div style={{display: this.state.visible ? 'none' : 'block'}} >
