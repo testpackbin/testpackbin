@@ -15,7 +15,8 @@ export default [
       success: [setSession],
       error: [showSnackbar('Error retrieving the course!')]
     }],
-    isFalse: [setSession]
+    isFalse: []
   },
-  set('state:/courses.isLoading', false)
+  set('state:/courses.isLoading', false),
+  copy('state:/user.user.courses', 'state:/courses.courses')
 ];
