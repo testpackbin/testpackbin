@@ -11,6 +11,13 @@ ul{
 li{
   margin-left: -46px;
 }
+.arrow{
+  padding-bottom: 6px;
+  margin-left: -4px;
+}
+.signOut:hover{
+  color: white;
+}
 .button {
   background: transparent;
   border: 0;
@@ -155,6 +162,7 @@ li{
   line-height: 56px;
   float: left;
   font-family: Ubuntu, sans-serif;
+  font-weight: 100;
 }
 
 .iconTitle {

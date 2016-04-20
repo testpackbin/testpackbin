@@ -1,5 +1,7 @@
 import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
+import AngleLeft from 'react-icons/lib/fa/angle-left';
+import AngleRight from 'react-icons/lib/fa/angle-right';
 
 let elements = null;
 
@@ -43,14 +45,16 @@ class Home extends React.Component {
       <div className={styles.columnWrapper}>
         <div className={styles.column}>
           <div className={styles.columnContent}>
-            <h2 className={styles.columnTitle}>TestPack</h2>
-            {
+            <h2 className={styles.columnTitle}>TestPack Bin</h2>
+            {/*{
                 <div>
                   <button className={styles.submitButton} onClick={() => this.props.signals.home.shortCutClicked()}>
                    Bypass security
                   </button>
                 </div>
-            }
+            }*/}
+            <p>Information about our app should go here. </p>
+            <p>Even more information about our app should go here.</p>
           </div>
         </div>
         <div className={styles.column}>
@@ -114,10 +118,11 @@ class Home extends React.Component {
       return (
         <div className={styles.wrapper}>
           <div className={styles.container}>
-            <div className={styles.logo}></div>
-            <h1>Welcome, bro</h1>
+            {/*<div className={styles.logo}></div>*/}
+            <div className={styles.logo}><AngleLeft className={styles.arrow}/>TESTPACKBIN /<AngleRight className={styles.arrow}/></div>
+            <h1>Welcome</h1>
             <div className={styles.descText}>
-              Yo dawg, I heard you like testing
+              A really catchy tag line should go here.
             </div>
             <div className={styles.showYouHowText}>Dive right in</div>
             {this.renderButtons()}

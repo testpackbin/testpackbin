@@ -5,7 +5,8 @@ import ToolbarButtonPopover from 'common/components/ToolbarButtonPopover';
 import ToolbarTitle from 'common/components/ToolbarTitle';
 import icons from 'common/icons.css';
 import styles from './styles.css';
-import Code from 'react-icons/lib/fa/code';
+import AngleLeft from 'react-icons/lib/fa/angle-left';
+import AngleRight from 'react-icons/lib/fa/angle-right';
 import User from 'react-icons/lib/fa/user';
 import SignOut from 'react-icons/lib/fa/sign-out';
 
@@ -23,8 +24,8 @@ class ToolbarContent extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        <span className={styles.title}><Code/> TestPack Bin Courses</span>
-      <div className={styles.button} onClick={() => this.setState({visible:!this.state.visible})} onMouseLeave={() => this.setState({visible:!this.state.visible})}>
+        <span className={styles.title}><AngleLeft className={styles.arrow}/>TESTPACKBIN /<AngleRight className={styles.arrow}/></span>
+      <div className={styles.button} onClick={() => this.setState({visible:!this.state.visible})} onMouseLeave={() => this.setState({visible:'none'})}>
           <User className={styles.icon}/>
           {this.props.userId}
           <div style={{display: this.state.visible ? 'none' : 'block'}} >
