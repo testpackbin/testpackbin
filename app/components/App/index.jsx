@@ -5,11 +5,13 @@ import Home from 'components/Home';
 import Courses from 'components/Courses';
 import Admin from 'components/Admin';
 import styles from './styles.css';
+import BinEdit from 'components/BinEdit';
 
 const pages = {
   'home': Home,
   'courses': Courses,
-  'admin': Admin
+  'admin': Admin,
+  'binEdit' : BinEdit
 };
 
 @Cerebral({
