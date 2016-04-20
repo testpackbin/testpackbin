@@ -60,6 +60,7 @@ controller.addModules({
     '/courses': 'courses.opened',
    // '/courses/:courseId': 'course.opened',
    '/admin': 'admin.opened',
+   '/binedit':'admin.binEditOpened',
     '*': 'missingRouteRouted'
   }, {
     onlyHash: true,

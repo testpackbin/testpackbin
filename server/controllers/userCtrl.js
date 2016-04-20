@@ -124,6 +124,7 @@ module.exports = {
       if (user.password !== req.body.password) {
         return res.status(401).send(errorMsg.noMatch);
       }
+      console.log('Sending', user);
       res.status(201).send({
         user: user,
         id_token: createToken(user)
