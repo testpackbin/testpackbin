@@ -8,7 +8,8 @@ let CoursesList = null;
 
 
 @Cerebral({
-  admin: 'user.user.admin',
+  templates: 'user.user.courses',
+  users: '',
   isLoading: 'admin.isLoading'
 })
 
@@ -30,16 +31,29 @@ class Admin extends React.Component {
       });
     });
   }
-  render() {
-    return(
-      <div>
-    <button> Add Course </button><br />
-    <br />
-    <button> Edit Course </button><br />
-    <br />
-    <button> Delete Course </button>
-    </div>
-  );
-    }
+  renderCourses() {
+    return (
+      <div className={styles.wrapper} onClick={() => this.props.signals.courses.appClicked()}>
+        <Toolbar>
+          <ToolbarContent/>
+        </Toolbar>
+        <div className={styles.contentWrapper}>
+          <BinList/>
+        </div>
+      </div>
+    );
   }
+  render() {
+    if (this.state.canRender) {
+      return (
+        <div>
+          <div className={this.props.isLoading ? styles.overlayVisible : styles.overlay}></div>
+          {this.props.isLoading ? null : this.renderCourses()}
+       </div>
+      );
+    }
+
+    return null;
+  }
+}
 export default Admin;

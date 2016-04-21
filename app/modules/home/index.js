@@ -25,7 +25,6 @@ export default () => {
 
     module.addSignals({
       opened,
-      shortCutClicked,
       registerFormSubmitted,
       loginFormSubmitted,
       inputChange: {

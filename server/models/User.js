@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema({
   courses: [{
     courseId: {type: ObjectId, ref: 'Bin'},
     binId: {type: ObjectId, ref: 'Bin'}
-  }]
+  }],
+  isAdmin: {type: Boolean}
 })
 
 

@@ -37,6 +37,14 @@ class Courses extends React.Component {
         <div className={styles.contentWrapper}>
           <CoursesList/>
         </div>
+        <hr/>
+        <div>
+          
+        </div>
+        <button onClick={() => this.props.signals.admin.showUsersClicked}>Bring Em Users</button>
+        <div>
+          <UserList>
+        </div>
       </div>
     );
   }
