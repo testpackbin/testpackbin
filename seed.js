@@ -61,7 +61,7 @@ Bin.remove({})
     "author": "admin",
     "tests": [{
       "name": "spec.js",
-      "content": "describe(\"mainCtrl\",function(){var e,o,t,n;beforeEach(module(\"myApp\")),beforeEach(inject(function(c,i){e=c,o=e.$new(),t=i,n=t(\"mainCtrl\",{$rootScope:e,$scope:o})})),it(\"should exist\",function(){expect(n).toBeDefined()}),it(\"should say 'Hello World'\",function(){var e={};t(\"mainCtrl\",{$scope:e});expect(e.message).toEqual(\"Hello World\")})});"
+      "content": "describe(\'mainCtrl\', function(){ var $rootScope, $scope, $controller, mainCtrl; beforeEach(module(\'myApp\')); beforeEach(inject(function(_$rootScope_, _$controller_){ $rootScope = _$rootScope_; $scope = $rootScope.$new(); $controller = _$controller_; mainCtrl= $controller('mainCtrl', {\'$rootScope\' : $rootScope, \'$scope\': $scope}); })); it(\'should exist\', function() { expect(mainCtrl).toBeDefined(); }); });"
     }],
     "packages" : {
       "angular" : "1.5.0",
@@ -76,11 +76,12 @@ Bin.remove({})
     "files" : [
       {
         "name": "index.html",
-        "content": "<!DOCTYPEhtml><html><head><metacharset=\"utf-8\"><title>HelloWorld</title></head><body></div></body></html>"
+        "content": "<!DOCTYPEhtml>\n<html>\n<head>\n<title>HelloWorld</title>\n</head>\n<body>\n<div></div>\n</body>\n</html>"
       },
       {
         "name": "app.js",
-        "content": ""
+        "content": "",
+        "isEntry": true
       },
       {
         "name": "mainCtrl.js",
@@ -93,7 +94,7 @@ Bin.remove({})
     "name": "Angular Friends"
   },
   {
-    "id": "angular1",
+    "id": "angular2",
     "author": "admin",
     "tests": [{
       "name": "spec.js",
@@ -116,7 +117,8 @@ Bin.remove({})
       },
       {
         "name": "app.js",
-        "content": "angular.module('myApp', [])"
+        "content": "angular.module('myApp', [])",
+        "isEntry": true
       },
       {
         "name": "mainCtrl.js",
