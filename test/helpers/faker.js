@@ -53,5 +53,11 @@ module.exports = {
     .then(user => {
       return user;
     })
+  },
+
+  boilerplateAndSave() {
+    const bin = this.bin();
+    bin.isBoilerplate = true;
+    return new Bin(bin).save();
   }
 };

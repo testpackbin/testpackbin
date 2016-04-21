@@ -16,7 +16,6 @@ module.exports = {
       } else {
         res.status(200).send(bin);
       }
-
     })
   },
 

@@ -5,7 +5,8 @@ const
   Bin = require('../models/Bin'),
   _ = require('lodash'),
   config  = require('../config'),
-  jwt = require('jsonwebtoken');
+  jwt = require('jsonwebtoken'),
+  Promise = require('bluebird');
 
 
 function createToken(user) {
@@ -44,6 +45,18 @@ var errorMsg = {
   noMatch: "The username or password don't match"
 };
 
+function getCourses(user) {
+  return new Promise((resolve, reject) => {
+    Bin.find({isBoilerplate: true}).exec()
+    .then(courses => {
+      const ids = courses.map(val => {
+        return {courseId: val._id, binId: null}
+      })
+      resolve(User.findByIdAndUpdate(user._id, {$set: {"courses": ids}}));
+    })
+  })
+}
+
 module.exports = {
 
   create(req, res) {
@@ -67,15 +80,7 @@ module.exports = {
       }).save()
     })
     .then(user => {
-      newUserId = user._id;
-      return Bin.find({isBoilerplate: true}).exec();
-    })
-    .then(courses => {
-      const ids = courses.map(val => {
-        return {courseId: val._id, binId: null}
-      })
-
-      return User.findByIdAndUpdate(newUserId, { $set: {"courses": ids} });
+      return user.getCourses()
     })
     .then(user => {
       return User.findById(newUserId)
@@ -84,7 +89,6 @@ module.exports = {
         select: "-files -tests"
       }).exec()
     .then(user => {
-
       res.status(201).send({
         user: user,
         id_token: createToken(profile)
@@ -124,7 +128,6 @@ module.exports = {
       if (user.password !== req.body.password) {
         return res.status(401).send(errorMsg.noMatch);
       }
-      console.log('Sending', user);
       res.status(201).send({
         user: user,
         id_token: createToken(user)
@@ -166,7 +169,15 @@ module.exports = {
     })
     .exec()
     .then(user => {
-      res.status(200).send(user);
+      if (_.isEmpty(user.courses)) {
+        user.getCourses()
+        .then(user => {
+          res.status(200).send(user);
+        })
+        .catch(err => res.status(500).send(err));
+      } else {
+        res.status(200).send(user);
+      }
     })
     .catch(err => res.status(500).send(err));
   },
