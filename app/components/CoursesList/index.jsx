@@ -6,7 +6,7 @@ import CourseButton from 'common/components/CourseButton'
 @Cerebral({
   jwt: 'session.jwt',
   userId: 'user.user._id',
-  courses: 'user.user.courses'
+  courses: 'courses.courses'
 })
 class CoursesList extends React.Component {
   constructor() {
