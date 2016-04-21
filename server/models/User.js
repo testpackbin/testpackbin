@@ -3,6 +3,7 @@
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 const _ = require('lodash');
+const Bin = require('./Bin');
 
 const userSchema = new mongoose.Schema({
   username: {type: String, required: true, unique: true},
@@ -34,4 +35,26 @@ userSchema.statics.findByIdAndUpdateCourses = function(id, obj) {
 
 }
 
-module.exports = mongoose.model('User', userSchema);
+userSchema.methods.getCourses = function() {
+  const user = this;
+
+  return new Promise((resolve, reject) => {
+    Bin.find({isBoilerplate: true}).exec()
+    .then(courses => {
+      const ids = courses.map(val => {
+        return {courseId: val._id, binId: null}
+      })
+      return User.findByIdAndUpdate(user._id, {courses: ids}, {new: true})
+    })
+    .then(user => {
+      resolve(user);
+    })
+    .catch(err => {
+      console.log(err);
+      reject(err);
+    })
+  })
+}
+
+const User = mongoose.model('User', userSchema);
+module.exports = User;
