@@ -20,8 +20,7 @@ export default () => {
       binEditOpened,
       formSubmitted,
       inputChange: {
-        chain: inputChange,
-        sync: true
+        chain: inputChange
       }
     });
   };

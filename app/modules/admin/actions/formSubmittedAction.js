@@ -1,37 +1,32 @@
+import set from 'cerebral-addons/set';
+
 function formSubmittedAction({state, services, output}) {
   const id = state.get('binEdit.binForm.id');
   const name = state.get('binEdit.binForm.name');
   const sub = state.get('binEdit.binForm.sub');
   const description = state.get('binEdit.binForm.description');
 
- const binObj = {
-    name : name,
-    id : id,
-    sub : sub,
-    description : description
-
- }
- console.log(binObj)
-
   services.http.post(`/api/bins`, {
     id : id,
     name : name,
     subject : sub,
     description : description,
-    author: '',
+    author: "zach",
     files: [],
     tests: [],
     isBoilerplate: true,
-    loaders: '',
-    readMe: ''
+    loaders: {},
+    package: {},
+    readMe: ""
   })
     .then((response) => {
-      console.log(respons)
-      output.success({
-
-      });
+      console.log(response)
+      set('state:/binEdit.binForm.id', '')
+      console.log(state)
+      //output.success(response);
     }).catch(() => {
-      output.error();
+      console.log('in catch')
+      //output.error();
     });
 }
 
