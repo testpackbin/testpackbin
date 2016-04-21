@@ -2,6 +2,8 @@ import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
 import ToolbarContent from '../ToolbarContent';
 import styles from './styles.css';
+import BinTestUpload from 'components/BinTestUpload';
+import BinReadMe from 'components/BinReadMe';
 import Toolbar from 'common/components/Toolbar';
 import BinForm from 'components/BinForm';
 import BinUpload from 'components/BinUpload';
@@ -23,6 +25,8 @@ class BinEdit extends React.Component {
           <div className={styles.contentWrapper}>
             <BinForm />
             <BinUpload />
+            <BinTestUpload />
+            <BinReadMe />
           </div>
        </div>
      );

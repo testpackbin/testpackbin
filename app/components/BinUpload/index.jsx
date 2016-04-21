@@ -1,8 +1,6 @@
 import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
 import styles from './styles.css';
-import BinTestUpload from 'components/BinTestUpload';
-import BinReadMe from 'components/BinReadMe';
 
 
 class BinUpload extends React.Component {
@@ -14,8 +12,6 @@ class BinUpload extends React.Component {
     return (
     <div>
         Bin:<input type="file"/><br />
-        <BinTestUpload />
-        <BinReadMe />
         </div>
     );
   }

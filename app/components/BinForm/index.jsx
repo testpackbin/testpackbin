@@ -1,5 +1,9 @@
 import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
+import style from './styles.css'
+import AngleLeft from 'react-icons/lib/fa/angle-left';
+import AngleRight from 'react-icons/lib/fa/angle-right';
+import Add from 'react-icons/lib/md/add';
 
 @Cerebral({
 
