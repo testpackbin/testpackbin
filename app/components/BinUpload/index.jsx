@@ -1,27 +1,10 @@
 import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
 import styles from './styles.css';
+import BinTestUpload from 'components/BinTestUpload';
+import BinReadMe from 'components/BinReadMe';
 
-// class BinUpload extends React.Component({
-//     getInitialState: function() {
-//         return { showResults: false };
-//     },
-//     onClick: function() {
-//         this.setState({ showResults: true });
-//     },
-//     lol: function(){
-//       this.setState({showResults: false});
-//     },
-//     render: function() {
-//         return (
-//           <div id="results" className="search-results">
-//               Upload Bins <input type="file" /><br />
-//           </div>
-//         );
-//     }
-//
-// export default BinUpload;
-// })
+
 class BinUpload extends React.Component {
   constructor(props) {
     super(props);
@@ -29,8 +12,10 @@ class BinUpload extends React.Component {
   }
   render() {
     return (
-      <div>
-        <input type="file"/><br />
+    <div>
+        Bin:<input type="file"/><br />
+        <BinTestUpload />
+        <BinReadMe />
         </div>
     );
   }

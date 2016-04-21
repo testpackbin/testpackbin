@@ -1,0 +1,35 @@
+.title {
+  font-family: Ubuntu, sans-serif;
+  color: #cadaed;
+}
+body{
+  margin: 0;
+  background-color: #202634;
+}
+.courseWrapper {
+  font-family: Ubuntu, sans-serif;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: #aabbd7;
+  margin: 2px 0;
+  border: 1px solid #576679;
+  cursor: pointer;
+  position: relative;
+  color: #1b232e;
+}
+
+.courseWrapper:hover {
+  color: #fff;
+  background-color: #eb1e64;
+  border: 1px solid #eb1e64;
+}
+
+.wrapper{
+  width: 70%;
+  margin: 0 auto;
+}
+.scenes {
+  font-size: 12px;
+  position: absolute;
+  right: 20px;
+}

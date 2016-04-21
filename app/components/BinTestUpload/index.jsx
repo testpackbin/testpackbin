@@ -29,8 +29,8 @@ class BinTestUpload extends React.Component {
   }
   render() {
     return (
-      <div>
-        <input type="file"/><br />
+  <div>
+        Test: <input type="file"/><br />
       </div>
     );
   }

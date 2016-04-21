@@ -5,7 +5,6 @@ import styles from './styles.css';
 import Toolbar from 'common/components/Toolbar';
 import BinForm from 'components/BinForm';
 import BinUpload from 'components/BinUpload';
-import BinTestUpload from 'components/BinTestUpload';
 
 @Cerebral({
   courses: 'user.user.courses'
@@ -24,7 +23,6 @@ class BinEdit extends React.Component {
           <div className={styles.contentWrapper}>
             <BinForm />
             <BinUpload />
-            <BinTestUpload />
           </div>
        </div>
      );
