@@ -20,6 +20,14 @@ module.exports = {
     })
   },
 
+  boilerplates(req, res, next) {
+    if (req.params.id !== 'boilerplates') return next();
+
+    Bin.find({isBoilerplate: true}).exec()
+    .then(bins => res.status(200).send(bins))
+    .catch(err => res.status(500).send(err));
+  },
+
   update(req, res) {
     Bin.findByIdAndUpdate(req.body._id, {$set: req.body}, (err, r) => {
       if (err) { console.log(err); res.sendStatus(500) }
