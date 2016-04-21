@@ -1,7 +1,7 @@
 import opened from './signals/opened';
 import binEditOpened from './signals/binEditOpened';
 import showUsersClicked from './signals/showUsersClicked';
-import removeUserClicked from './signals/removeUserClicked';
+import removeItemClicked from './signals/removeItemClicked';
 
 export default () => {
   return (module) => {
@@ -14,7 +14,7 @@ export default () => {
       opened,
       binEditOpened,
       showUsersClicked,
-      removeUserClicked
+      removeItemClicked
     });
   };
 };

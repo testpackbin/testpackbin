@@ -17,7 +17,7 @@ class UserList extends React.Component {
         <ul>
         {this.props.users.map((user, index) => {
           return <li>
-            {user.name}<button onClick={this.props.signals.admin.removeUserClicked({index: index, id: user._id})}>Remove</button>
+            {user.name}<button onClick={this.props.signals.admin.removeItemClicked({item: 'user', index: index, id: user._id})}>Remove</button>
           </li>
         })}
         </ul>
