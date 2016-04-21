@@ -1,3 +1,5 @@
+'use strict'
+
 const Faker = require('faker');
 const Bin = require('../../server/models/Bin');
 const User = require('../../server/models/User');
@@ -53,5 +55,11 @@ module.exports = {
     .then(user => {
       return user;
     })
+  },
+
+  boilerplateAndSave() {
+    let bin = this.bin()
+    bin.isBoilerplate = true;
+    return new Bin(bin).save();
   }
 };

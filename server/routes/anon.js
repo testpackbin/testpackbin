@@ -6,4 +6,4 @@ var app = module.exports = express.Router();
 // Bins
 app.post('/api/bins', bins.create);
 app.put('/api/bins', bins.update);
-app.get('/api/bins/:id', bins.show);
+app.get('/api/bins/:id', bins.boilerplates, bins.show);
