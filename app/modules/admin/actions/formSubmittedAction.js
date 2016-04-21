@@ -1,5 +1,4 @@
-import set from 'cerebral-addons/set';
-
+import redirect from 'common/factories/actions/redirect';
 function formSubmittedAction({state, services, output}) {
   const id = state.get('binEdit.binForm.id');
   const name = state.get('binEdit.binForm.name');
@@ -12,7 +11,10 @@ function formSubmittedAction({state, services, output}) {
     subject : sub,
     description : description,
     author: "zach",
-    files: [],
+    files: [{
+      "name" : "index.html",
+      "content" : ""
+    }],
     tests: [],
     isBoilerplate: true,
     loaders: {},
@@ -20,9 +22,10 @@ function formSubmittedAction({state, services, output}) {
     readMe: ""
   })
     .then((response) => {
-      console.log(response)
-      set('state:/binEdit.binForm.id', '')
-      console.log(state)
+      var id = response.result.id;
+      var location = "http://www.webpackbin.dev:4000/";
+      window.location = location+id;
+      //console.log(id)
       //output.success(response);
     }).catch(() => {
       console.log('in catch')

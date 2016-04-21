@@ -14,7 +14,7 @@ import BinUpload from 'components/BinUpload';
 class BinEdit extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = {visible: false};
   }
   render() {
       return (
@@ -24,9 +24,9 @@ class BinEdit extends React.Component {
           </Toolbar>
           <div className={styles.contentWrapper}>
             <BinForm />
-            <BinUpload />
-            <BinTestUpload />
-            <BinReadMe />
+            <span style={{display: this.state.visible ? 'none' : 'block'}}><BinUpload /></span>
+            <span style={{display: this.state.visible ? 'none' : 'block'}}><BinTestUpload /></span>
+            <span style={{display: this.state.visible ? 'none' : 'block'}}><BinReadMe /></span>
           </div>
        </div>
      );

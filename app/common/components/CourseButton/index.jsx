@@ -27,7 +27,7 @@ class CourseButton extends React.Component {
           <p>{this.props.course.courseId.readme}</p>
           <div className={styles.buttonLinks}>
             <a className={styles.newBin} href={this.props.links.courseLink}><Start className={styles.iconGrey}/>New Bin</a>
-            {(this.props.links.binLink)? <a className={styles.continue} href={this.props.links.binLink}><Refresh className={styles.iconGrey}/>Continue</a> : ''}
+            <a href={this.props.links.binLink}><Refresh className={styles.iconGrey}/>Continue</a>
           </div>
         </div>
       </div>
@@ -37,4 +37,5 @@ class CourseButton extends React.Component {
 
 export default CourseButton;
 
+  //{(this.props.links.binLink)? <a className={styles.continue} href={this.props.links.binLink}><Refresh className={styles.iconGrey}/>Continue</a> : ''}
   // <a href={this.props.links.binLink}><Refresh className={styles.iconGrey}/>Continue</a>
