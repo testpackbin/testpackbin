@@ -47,37 +47,32 @@ var errorMsg = {
 module.exports = {
 
   create(req, res) {
-    console.log('In user create');
     const userScheme = getUserScheme(req);
     let newUserId, profile;
     if (!userScheme.username || !req.body.password) {
-      console.log('No pair');
+      console.log('Sending headers');
       return res.status(400).send(errorMsg.noPair);
     }
 
     User.findOne(userScheme.userSearch).exec()
     .then(user => {
       if (user) {
-        console.log('This user exists already!');
-      return res.status(400).send(errorMsg.exists);
+        console.log('user exists! sending headers');
+      return errorMsg.exists;
       }
 
       profile = _.pick(req.body, userScheme.type, 'password', 'extra');
 
-      console.log('Going to save user');
-      console.log('Profile is', profile);
       return new User({
         username: profile.email || profile.username,
         password: profile.password
       }).save()
     })
     .then(user => {
-      console.log('Getting here');
       newUserId = user._id;
       return Bin.find({isBoilerplate: true}).exec();
     })
     .then(courses => {
-      console.log('Then getting here');
       const ids = courses.map(val => {
         return {courseId: val._id, binId: null}
       })
@@ -85,8 +80,6 @@ module.exports = {
       return User.findByIdAndUpdate(newUserId, { $set: {"courses": ids} });
     })
     .then(user => {
-      console.log('Goign to find new user');
-      console.log(newUserId);
       return User.findById(newUserId)
       .populate({
         path: "courses.courseId",
@@ -94,16 +87,13 @@ module.exports = {
       }).exec()
     .then(user => {
 
-      console.log()
-      console.log('Sending back');
-      console.log(user);
       res.status(201).send({
         user: user,
         id_token: createToken(profile)
       });
     })
     .catch(err => {
-      console.log(err);
+
       res.send(err)
     });
   })
@@ -136,6 +126,7 @@ module.exports = {
       if (user.password !== req.body.password) {
         return res.status(401).send(errorMsg.noMatch);
       }
+      console.log('Sending', user);
       res.status(201).send({
         user: user,
         id_token: createToken(user)
@@ -163,7 +154,10 @@ module.exports = {
   },
 
   show(req, res) {
-    return User.findById(req.params.id)
+
+    if (req.params.id === 'index') return;
+
+    return User.findById(req.params.id || req.query.user)
     .populate({
       path: "courses.courseId",
       select: "-files -tests"
@@ -177,5 +171,30 @@ module.exports = {
       res.status(200).send(user);
     })
     .catch(err => res.status(500).send(err));
+  },
+
+  index(req, res) {
+
+    return User.find({})
+    .populate('_id', 'name')
+    .exec()
+    .then(users => {
+      res.status(200).send(users);
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).send(err);
+    })
+
+  },
+
+  delete(req, res) {
+    return User.remove({_id: req.params.id}).exec()
+    .then(result => {
+      res.sendStatus(200)
+    })
+    .catch(err => {
+      res.sendStatus(500);
+    })
   }
 };

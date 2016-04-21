@@ -25,5 +25,25 @@ module.exports = {
       if (err) { console.log(err); res.sendStatus(500) }
       res.sendStatus(200);
     })
+  },
+
+  show(req, res) {
+    Bin.findById(req.params.id).exec()
+    .then(bin => {
+      res.status(200).send(bin);
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    })
+  },
+
+  delete(req, res) {
+    Bin.remove({_id: req.params.id}).exec()
+    .then(result => {
+      res.sendStatus(200);
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    })
   }
 };

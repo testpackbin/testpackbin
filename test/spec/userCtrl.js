@@ -61,7 +61,7 @@ describe('userCtrl', () => {
     })
   })
 
-  it('should update a user', (done) => {
+  it.skip('should update a user', (done) => {
     auth().then(testUser => {
       agent
       .put('/api/users')
@@ -135,6 +135,27 @@ describe('userCtrl', () => {
     })
   })
 
+  it('should show all users', (done) => {
+    Promise.all([
+      fake.userAndSave(),
+      fake.userAndSave(),
+      fake.userAndSave()
+    ])
+    .then(users => {
+      chai.request(server)
+      .get('/api/users/index')
+      .end((e, r) => {
+        r.should.have.status(200);
+        r.body.should.be.a('array');
+        r.body.length.should.equal(3);
+        let index = _.findIndex(r.body, {'username': users[0].username})
+        r.body[index].should.be.ok;
+
+        done();
+      })
+    })
+  })
+
   it.skip('should update a user bin', (done) => {
     Promise.all([
       fake.userAndSave(),
@@ -167,6 +188,22 @@ describe('userCtrl', () => {
           expect(test.binId).to.equal(bin._id)
           done();
 
+        })
+      })
+    })
+  })
+
+  it('should delete a user', (done) => {
+    fake.userAndSave()
+    .then(testUser => {
+      chai.request(server)
+      .delete('/api/users/' + testUser._id)
+      .end((e, r) => {
+        r.should.have.status(200)
+
+        User.findById(testUser._id, (e, user) => {
+          expect(user).to.not.be.ok;
+          done();
         })
       })
     })

@@ -11,7 +11,8 @@ function login({state, services, output}) {
         jwt: response.result.id_token,
         user: response.result.user
       });
-    }).catch(() => {
+    }).catch((e) => {
+
       output.error();
     });
 }
