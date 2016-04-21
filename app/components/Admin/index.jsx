@@ -5,11 +5,12 @@ let ToolbarContent = null;
 let Toolbar = null;
 let styles = null;
 let CoursesList = null;
+let UserList = null;
 
 
 @Cerebral({
   templates: 'user.user.courses',
-  users: '',
+  users: 'admin.users',
   isLoading: 'admin.isLoading'
 })
 
@@ -25,6 +26,7 @@ class Admin extends React.Component {
       Toolbar = require('common/components/Toolbar').default;
       ToolbarContent = require('../ToolbarContent').default;
       CoursesList = require('../CoursesList').default;
+      UserList = require('../UserList').default;
       styles = require('./styles.css');
       this.setState({
         canRender: true
@@ -38,7 +40,14 @@ class Admin extends React.Component {
           <ToolbarContent/>
         </Toolbar>
         <div className={styles.contentWrapper}>
-          <BinList/>
+          <CoursesList/>
+        </div>
+        <hr/>
+        <div>
+          <button onClick={() => this.props.signals.admin.showUsersClicked}>Bring Em Users</button>
+        </div>
+        <div>
+          <UserList/>
         </div>
       </div>
     );

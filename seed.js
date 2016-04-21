@@ -144,8 +144,8 @@ User.remove({})
   User.insertMany([  
   
   {
-    "username" : "admin",
-    "password" : "1337@dm1n",
+    "username" : "a@a.a",
+    "password" : "1337",
     "courses" : [],
     "isAdmin" : true
 }

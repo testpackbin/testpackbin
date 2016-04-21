@@ -2,7 +2,6 @@ import opened from './signals/opened';
 import registerFormSubmitted from './signals/registerFormSubmitted';
 import loginFormSubmitted from './signals/loginFormSubmitted';
 import inputChange from './signals/inputChange';
-import shortCutClicked from './signals/shortCutClicked';
 
 export default () => {
   return (module) => {
