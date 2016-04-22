@@ -25,11 +25,8 @@ function formSubmittedAction({state, services, output}) {
       var id = response.result.id;
       var location = "http://www.webpackbin.dev:4000/";
       window.location = location+id;
-      //console.log(id)
-      //output.success(response);
     }).catch(() => {
-      console.log('in catch')
-      //output.error();
+      showSnackbar('Error adding the course!')
     });
 }
 

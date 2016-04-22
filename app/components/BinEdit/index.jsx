@@ -24,9 +24,9 @@ class BinEdit extends React.Component {
           </Toolbar>
           <div className={styles.contentWrapper}>
             <BinForm />
-            <span style={{display: this.state.visible ? 'none' : 'block'}}><BinUpload /></span>
+            {/*<span style={{display: this.state.visible ? 'none' : 'block'}}><BinUpload /></span>
             <span style={{display: this.state.visible ? 'none' : 'block'}}><BinTestUpload /></span>
-            <span style={{display: this.state.visible ? 'none' : 'block'}}><BinReadMe /></span>
+            <span style={{display: this.state.visible ? 'none' : 'block'}}><BinReadMe /></span>*/}
           </div>
        </div>
      );

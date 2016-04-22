@@ -17,5 +17,6 @@ export default [
     }],
     isFalse: [setSession]
   },
-  set('state:/admin.isLoading', false)
+  set('state:/admin.isLoading', false),
+
 ];
