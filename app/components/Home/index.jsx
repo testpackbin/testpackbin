@@ -48,9 +48,7 @@ class Home extends React.Component {
             <h2 className={styles.columnTitle}>TestPack Bin</h2>
             {/*{
                 <div>
-                  <button className={styles.submitButton} onClick={() => this.props.signals.home.shortCutClicked()}>
-                   Bypass security
-                  </button>
+
                 </div>
             }*/}
             <p>Information about our app should go here. </p>

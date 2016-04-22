@@ -29,16 +29,23 @@ function auth() {
   })
 }
 
+function cleanDb() {
+  return Promise.all([
+    User.remove({}),
+    Bin.remove({})
+  ])
+}
+
 describe('userCtrl', () => {
 
   before((done) => {
-    User.collection.drop((e, r) => {
+    cleanDb().then(result => {
       done();
     })
   })
 
   afterEach((done) => {
-    User.collection.drop((e, r) => {
+    cleanDb().then(result => {
       done();
     })
   })
@@ -205,6 +212,30 @@ describe('userCtrl', () => {
           expect(user).to.not.be.ok;
           done();
         })
+      })
+    })
+  })
+
+  it('should add courses to a user', (done) => {
+    Promise.all([
+      fake.userAndSave(),
+      fake.boilerplateAndSave()
+    ])
+    .spread((user, boilerplate) => {
+
+      expect(user.courses).to.be.empty;
+
+      chai.request(server)
+      .get('/api/users/' + user._id)
+      .end((e, r) => {
+        r.should.have.status(200);
+        r.body.should.be.a('object');
+        r.body.courses.should.be.a('array');
+        let c = r.body.courses;
+        c[0].should.be.a('object');
+        c[0].should.have.property('courseId');
+        c[0].courseId.should.equal(boilerplate._id.toString())
+        done();
       })
     })
   })

@@ -3,26 +3,25 @@ import set from 'cerebral-addons/set';
 import copy from 'cerebral-addons/copy';
 import when from 'cerebral-addons/when';
 import loadUser from '../actions/loadUser';
+import redirectToAdmin from '../actions/redirectToAdmin';
 import showSnackbar from 'common/factories/actions/showSnackbar';
 import setSession from '../actions/setSession';
-import loadCourses from '../actions/loadCourses';
 
 export default [
-  setPage('courses'),
   set('state:/courses.isLoading', true),
+  setPage('courses'),
   when('input:/jwt'), {
     isTrue: [
       loadUser, {
       success: [setSession],
-      error: [showSnackbar('Error retrieving the course!')]
+      error: [showSnackbar('Error retrieving user!')]
     }],
     isFalse: []
   },
-
-  //copy('state:/user.user.courses', 'state:/courses.courses'),
-  loadCourses, {
-    success: [copy('input:/userCourses', 'state:/courses.courses')],
-    error: [showSnackbar('Error retrieving the course!')]
-  },
-  set('state:/courses.isLoading', false)
+  copy('state:/user.user.courses', 'state:/courses.courses'),
+  set('state:/courses.isLoading', false),
+  when('state:/user.user.isAdmin'), {
+    isTrue: [redirectToAdmin],
+    isFalse: []
+  }
 ];

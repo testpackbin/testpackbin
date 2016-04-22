@@ -58,12 +58,11 @@ controller.addModules({
   router: Router({
     '/': 'home.opened',
     '/courses': 'courses.opened',
-   // '/courses/:courseId': 'course.opened',
-   '/admin': 'admin.opened',
-   '/binedit':'admin.binEditOpened',
+    '/admin': 'admin.opened',
+    '/binedit':'admin.binEditOpened',
     '*': 'missingRouteRouted'
   }, {
-    onlyHash: true,
+    onlyHash: false,
     mapper: {query: true}
   })
 });
