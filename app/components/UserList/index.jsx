@@ -3,9 +3,7 @@ import {Decorator as Cerebral} from 'cerebral-view-react';
 import styles from './styles.css';
 
 @Cerebral({
-  jwt: 'session.jwt',
-  userId: 'user.user._id',
-  courses: 'admin.users'
+  users: 'admin.users'
 })
 class UserList extends React.Component {
   constructor() {
@@ -16,9 +14,11 @@ class UserList extends React.Component {
       <div className={styles.wrapper}>
         <ul>
         {this.props.users.map((user, index) => {
-          return <li>
-            {user.name}<button onClick={this.props.signals.admin.removeItemClicked({item: 'user', index: index, id: user._id})}>Remove</button>
-          </li>
+          return (
+            <li>
+              {user.username}<button onClick={() => this.props.signals.admin.removeItemClicked({item: 'user', index: index, id: user._id})}>Remove</button>
+            </li>
+          )
         })}
         </ul>
       </div>

@@ -14,7 +14,7 @@ export default [
     isTrue: [
       loadUser, {
       success: [setSession],
-      error: [showSnackbar('Error retrieving the course!')]
+      error: [showSnackbar('Error retrieving user!')]
     }],
     isFalse: []
   },

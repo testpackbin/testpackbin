@@ -7,6 +7,6 @@ import removeLocalItem from '../actions/removeLocalItem';
 export default [
   removeItem, {
     success: [removeLocalItem],
-    error: [showSnackbar('Error retrieving users!')]
+    error: [showSnackbar('Error removing users!')]
   }
 ]

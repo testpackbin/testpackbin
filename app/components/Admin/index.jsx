@@ -9,8 +9,6 @@ let UserList = null;
 
 
 @Cerebral({
-  templates: 'user.user.courses',
-  users: 'admin.users',
   isLoading: 'admin.isLoading'
 })
 
@@ -41,13 +39,8 @@ class Admin extends React.Component {
         </Toolbar>
         <div className={styles.contentWrapper}>
           <CoursesList/>
-        </div>
-        <hr/>
-        <div>
-          <button onClick={() => this.props.signals.admin.showUsersClicked}>Bring Em Users</button>
-        </div>
-        <div>
-          //<UserList/>
+          <hr/>
+          <UserList/> 
         </div>
       </div>
     );

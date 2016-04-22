@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
     courseId: {type: ObjectId, ref: 'Bin'},
     binId: {type: ObjectId, ref: 'Bin'}
   }],
-  isAdmin: {type: Boolean}
+  isAdmin: {type: Boolean, default: false}
 })
 
 const User = mongoose.model('User', userSchema);
@@ -31,8 +31,6 @@ userSchema.statics.findByIdAndUpdateCourses = function(id, obj) {
         binId: obj.bin
       })
     }
-
-
     return user.save();
   })
 

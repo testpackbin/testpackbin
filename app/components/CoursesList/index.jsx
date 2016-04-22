@@ -26,8 +26,8 @@ class CoursesList extends React.Component {
              <CourseButton key={index} course={course} links={links} index={index}/>
              {(this.props.isAdmin)?
                <div>
-                 <button onClick={this.props.signals.admin.binEditClicked({id: course._id})}>Edit</button>
-                 <button onClick={this.props.signals.admin.removeItemClicked({item: 'course', index: index, id: course._id})}>Remove</button>  
+                 <button onClick={() => this.props.signals.admin.binEditClicked({id: course._id})}>Edit</button>
+                 <button onClick={() => this.props.signals.admin.removeItemClicked({item: 'course', index: index, id: course._id})}>Remove</button>  
                </div>
              :""}
            </div>
