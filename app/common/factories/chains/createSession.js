@@ -7,7 +7,6 @@ function createSession(name, chain) {
       output.success({sessionId: response.result.sessionId});
     })
     .catch((e) => {
-      console.log('Could not create session', e);
       output.error(e);
     });
   }

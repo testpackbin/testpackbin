@@ -14,6 +14,7 @@ import SignOut from 'react-icons/lib/fa/sign-out';
   userId: 'user.user.username'
 })
 class ToolbarContent extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {

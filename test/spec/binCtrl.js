@@ -7,7 +7,8 @@ const server = require('../../server/index'),
       should = chai.should(),
       Bin = require('../../server/models/Bin'),
       fake = require('../helpers/faker'),
-      _ = require('lodash');
+      _ = require('lodash'),
+      Promise = require('bluebird');
 
 chai.use(chaiHttp);
 
@@ -112,6 +113,25 @@ describe('binCtrl', () => {
           expect(bin).to.not.be.ok;
           done();
         })
+      })
+    })
+  })
+
+  it('should get a list of boilerplates', (done) => {
+    Promise.all([
+      fake.boilerplateAndSave(),
+      fake.boilerplateAndSave(),
+      fake.boilerplateAndSave()
+    ])
+    .spread(bin => {
+      chai.request(server)
+      .get('/api/bins/boilerplates')
+      .end((e, r) => {
+        if (e) throw e;
+        r.should.have.status(200)
+        r.body.should.be.a("array");
+        r.body[0]._id.should.equal(bin._id.toString());
+        done();
       })
     })
   })

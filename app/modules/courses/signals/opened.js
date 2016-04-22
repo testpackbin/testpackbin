@@ -5,6 +5,7 @@ import when from 'cerebral-addons/when';
 import loadUser from '../actions/loadUser';
 import showSnackbar from 'common/factories/actions/showSnackbar';
 import setSession from '../actions/setSession';
+import loadCourses from '../actions/loadCourses';
 
 export default [
   setPage('courses'),
@@ -17,6 +18,11 @@ export default [
     }],
     isFalse: []
   },
-  set('state:/courses.isLoading', false),
-  copy('state:/user.user.courses', 'state:/courses.courses')
+
+  //copy('state:/user.user.courses', 'state:/courses.courses'),
+  loadCourses, {
+    success: [copy('input:/userCourses', 'state:/courses.courses')],
+    error: [showSnackbar('Error retrieving the course!')]
+  },
+  set('state:/courses.isLoading', false)
 ];
