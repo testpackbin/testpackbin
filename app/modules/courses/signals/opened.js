@@ -18,10 +18,10 @@ export default [
     }],
     isFalse: []
   },
+  copy('state:/user.user.courses', 'state:/courses.courses'),
+  set('state:/courses.isLoading', false),
   when('state:/user.user.isAdmin'), {
     isTrue: [redirectToAdmin],
     isFalse: []
-  },
-  set('state:/courses.isLoading', false),
-  copy('state:/user.user.courses', 'state:/courses.courses')
+  }
 ];

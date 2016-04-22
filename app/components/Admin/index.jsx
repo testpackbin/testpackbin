@@ -47,7 +47,7 @@ class Admin extends React.Component {
           <button onClick={() => this.props.signals.admin.showUsersClicked}>Bring Em Users</button>
         </div>
         <div>
-          <UserList/>
+          //<UserList/>
         </div>
       </div>
     );

@@ -46,14 +46,12 @@ var errorMsg = {
 };
 
 function getCourses(user) {
-  return new Promise((resolve, reject) => {
-    Bin.find({isBoilerplate: true}).exec()
-    .then(courses => {
-      const ids = courses.map(val => {
-        return {courseId: val._id, binId: null}
-      })
-      resolve(User.findByIdAndUpdate(user._id, {$set: {"courses": ids}}));
-    })
+  Bin
+  .find({isBoilerplate: true})
+  .exec()
+  .then(courses => {
+    const ids = courses.map(val => ({courseId: val._id, binId: null}))
+    return User.findByIdAndUpdate(user._id, {$set: {"courses": ids}});
   })
 }
 
@@ -110,6 +108,7 @@ module.exports = {
       return res.status(400).send(errorMsg.noPair);
     }
     User.findOne(userScheme.userSearch)
+    .populate("-password")
     .populate({
       path: "courses.courseId",
       select: "-files -tests"
@@ -128,12 +127,16 @@ module.exports = {
       if (user.password !== req.body.password) {
         return res.status(401).send(errorMsg.noMatch);
       }
-      res.status(201).send({
+
+      return (_.isEmpty(user.courses))?getCourses(user):user;
+    })
+    .then(user => {
+      res.status(200).send({
         user: user,
         id_token: createToken(user)
-      })
+      });
     })
-    .catch(err => res.send(err));
+    .catch(err => res.status(500).send(err));
   },
 
 
@@ -159,6 +162,7 @@ module.exports = {
     if (req.params.id === 'index') return;
 
     return User.findById(req.params.id || req.query.user)
+    .populate("-password") 
     .populate({
       path: "courses.courseId",
       select: "-files -tests"
@@ -168,17 +172,8 @@ module.exports = {
       select: "-files -tests"
     })
     .exec()
-    .then(user => {
-      if (_.isEmpty(user.courses)) {
-        user.getCourses()
-        .then(user => {
-          res.status(200).send(user);
-        })
-        .catch(err => res.status(500).send(err));
-      } else {
-        res.status(200).send(user);
-      }
-    })
+    .then(user => (_.isEmpty(user.courses))?getCourses(user):user)
+    .then(user => res.status(200).send(user))
     .catch(err => res.status(500).send(err));
   },
 

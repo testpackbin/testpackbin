@@ -7,7 +7,7 @@ import CourseButton from 'common/components/CourseButton'
   jwt: 'session.jwt',
   userId: 'user.user._id',
   courses: 'courses.courses',
-  isAdmin: 'user.isAdmin'
+  isAdmin: 'user.user.isAdmin'
 })
 class CoursesList extends React.Component {
   constructor() {
@@ -17,18 +17,23 @@ class CoursesList extends React.Component {
     return (
       <div className={styles.wrapper}>
         {this.props.courses.map((course, index) => {
-          let links ={
+          const links = {
             binLink: (course.binId) ? `http://www.webpackbin.dev:4000?${course.binId.id}?jwt=${this.props.jwt}&user=${this.props.userId}`: '',
             courseLink: `http://www.webpackbin.dev:4000/${course.courseId.id}?jwt=${this.props.jwt}&user=${this.props.userId}`
           }
           return (
             <div>
              <CourseButton key={index} course={course} links={links} index={index}/>
-             {(isAdmin)?<button onClick={this.props.signals.admin.removeItemClicked({item: 'course', index: index, id: course._id})}>Remove</button>}
+             {(this.props.isAdmin)?
+               <div>
+                 <button onClick={this.props.signals.admin.binEditClicked({id: course._id})}>Edit</button>
+                 <button onClick={this.props.signals.admin.removeItemClicked({item: 'course', index: index, id: course._id})}>Remove</button>  
+               </div>
+             :""}
            </div>
-          )}  
-        )};
-
+          )  
+        })
+      }
       </div>
     );
   }

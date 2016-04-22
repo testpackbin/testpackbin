@@ -62,7 +62,7 @@ controller.addModules({
     '/binedit':'admin.binEditOpened',
     '*': 'missingRouteRouted'
   }, {
-    onlyHash: true,
+    onlyHash: false,
     mapper: {query: true}
   })
 });
