@@ -3,6 +3,8 @@
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 const _ = require('lodash');
+const Bin = require('./Bin');
+
 
 const userSchema = new mongoose.Schema({
   username: {type: String, required: true, unique: true},
@@ -10,8 +12,11 @@ const userSchema = new mongoose.Schema({
   courses: [{
     courseId: {type: ObjectId, ref: 'Bin'},
     binId: {type: ObjectId, ref: 'Bin'}
-  }]
+  }],
+  isAdmin: {type: Boolean, default: false}
 })
+
+const User = mongoose.model('User', userSchema);
 
 
 userSchema.statics.findByIdAndUpdateCourses = function(id, obj) {
@@ -26,11 +31,10 @@ userSchema.statics.findByIdAndUpdateCourses = function(id, obj) {
         binId: obj.bin
       })
     }
-
-
     return user.save();
   })
 
 }
 
-module.exports = mongoose.model('User', userSchema);
+
+module.exports = User;

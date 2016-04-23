@@ -11,7 +11,6 @@ const model = Model({
   user: {
     isLoggedIn: false,
     isLoading: false,
-    isAdmin: false,
     forceUser: false,
     user: {}
   },

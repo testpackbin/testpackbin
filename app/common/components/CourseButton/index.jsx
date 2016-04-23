@@ -20,11 +20,11 @@ class CourseButton extends React.Component {
 
         <div style={{ position: "relative" }} className={styles.header} onClick={() => this.setState({visible:!this.state.visible})}>
           <Ink />
-          <span className={styles.title}>{this.props.course.id}</span>
+          <span className={styles.title}>{this.props.course.courseId.id}</span>
           <span className={styles.showMore} >{(this.state.visible)?<DownArrow className={styles.arrows}/>:<UpArrow className={styles.arrows}/>}</span>
         </div>
         <div style={{display: this.state.visible ? 'none' : 'block'}}>
-          <p>{this.props.course.description}</p>
+          <p>{this.props.course.courseId.description}</p>
           <div className={styles.buttonLinks}>
             <a className={styles.newBin} href={this.props.links.courseLink}><Start className={styles.iconGrey}/>New Bin</a>
             {/*<a href={this.props.links.binLink}><Refresh className={styles.iconGrey}/>Continue</a>*/}

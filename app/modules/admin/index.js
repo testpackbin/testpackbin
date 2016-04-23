@@ -3,16 +3,19 @@ import binEditOpened from './signals/binEditOpened';
 import formSubmitted from './signals/formSubmitted';
 import inputChange from './signals/inputChange';
 
+import binEditClicked from './signals/binEditClicked';
+import removeItemClicked from './signals/removeItemClicked';
+
 export default () => {
   return (module) => {
     module.addState({
-      admin: {},
       binForm: {
         name: '',
         id: '',
         sub: '',
         description: ''
       },
+      users: []
     });
 
     module.addSignals({
@@ -21,7 +24,10 @@ export default () => {
       formSubmitted,
       inputChange: {
         chain: inputChange
-      }
+      },
+      binEditClicked,
+      binEditOpened,
+      removeItemClicked
     });
   };
 };
