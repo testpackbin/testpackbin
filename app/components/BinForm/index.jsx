@@ -1,9 +1,9 @@
 import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
 import style from './styles.css'
-import AngleLeft from 'react-icons/lib/fa/angle-left';
-import AngleRight from 'react-icons/lib/fa/angle-right';
-import Add from 'react-icons/lib/md/add';
+// import AngleLeft from 'react-icons/lib/fa/angle-left';
+// import AngleRight from 'react-icons/lib/fa/angle-right';
+import Add from 'react-icons/lib/md/add-circle';
 
 @Cerebral({
 
@@ -16,6 +16,9 @@ class BinForm extends React.Component {
     super(props);
     this.state = {};
   }
+  componentDidMount(){
+      React.findDOMNode(this.refs.nameInput).focus();
+    }
   onInputChange(form, type, value) {
     this.props.signals.admin.inputChange({form: form, type: type, value: value});
   }
@@ -26,16 +29,18 @@ class BinForm extends React.Component {
           e.preventDefault();
           this.props.signals.admin.formSubmitted();
         }}>
-          <AngleLeft className={style.arrow}/>NEW BIN /<AngleRight className={style.arrow}/>
+          <span className={style.title}>CREATE COURSE</span>
           <input
             type="text"
-            placeholder="Bin Name"
+            placeholder="Course Name"
             required
+            focus
+            ref="nameInput"
             onChange={(e) => this.onInputChange('binForm', 'name', e.target.value)}
           />
           <input
             type="text"
-            placeholder="Bin Id (camel case, no spaces)"
+            placeholder="courseId (camel case, no spaces)"
             required
             onChange={(e) => this.onInputChange('binForm', 'id', e.target.value)}
           />
@@ -51,7 +56,7 @@ class BinForm extends React.Component {
             required
             onChange={(e) => this.onInputChange('binForm', 'description', e.target.value)}
           />
-          <button type="submit" className={style.submitButton}><Add className={style.addIcon}/>Add Bin</button>
+        <button type="submit" className={style.submitButton}><span className={style.addIcon}><Add/></span>Add Bin</button>
         </form>
       </div>
     );

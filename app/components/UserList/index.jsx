@@ -1,6 +1,7 @@
 import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
 import styles from './styles.css';
+import Remove from 'react-icons/lib/md/highlight-remove';
 
 @Cerebral({
   users: 'admin.users'
@@ -12,11 +13,12 @@ class UserList extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        <ul>
+        <div className={styles.titleHead}>USERS</div>
+        <ul className={styles.ul}>
         {this.props.users.map((user, index) => {
           return (
-            <li>
-              {user.username}<button onClick={() => this.props.signals.admin.removeItemClicked({item: 'user', index: index, id: user._id})}>Remove</button>
+            <li className={styles.li}>
+              {user.username}<button className={styles.Button} ></button><Remove onClick={() => this.props.signals.admin.removeItemClicked({item: 'user', index: index, id: user._id})} className={styles.icon}/>
             </li>
           )
         })}
@@ -27,4 +29,3 @@ class UserList extends React.Component {
 }
 
 export default UserList;
-

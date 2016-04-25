@@ -1,7 +1,7 @@
 .title {
   font-family: Ubuntu, sans-serif;
-  color: #202634;
-  font-size: 20px;
+  color: #D2A857;
+  font-size: 25px;
   text-transform: capitalize;
 }
 body{
@@ -18,7 +18,7 @@ a{
   font-family: Ubuntu, sans-serif;
   border-radius: 5px;
   padding: 5px 10px;
-  background-color: #aabbd7;
+  background-color: #526886;
   margin: 2px 0;
   border: 2px solid #576679;
   cursor: pointer;
@@ -27,14 +27,44 @@ a{
 }
 .courseWrapper:hover {
   color: #1b232e;
-  background-color: #aabbd7;
-  border: 2px solid #eb1e64;
+  background-color: #526886;
+  border: 2px solid #D2A857;
 }
-.iconGrey {
-  border: 2px solid #eb1e64;
+/*.iconGrey {
+  border: 2px solid #D2A857;
   border-radius: 50%;
   font-size: 16px;
-  color: #1b232e;
+  color: white;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  position: relative;
+  padding: 6px;
+  margin-right: 5px;
+  margin-left: 5px;
+  display: inline-block;
+}*/
+/*.iconGrey:hover{
+  color: #D2A857
+}*/
+.buttonLinks{
+  width: 230px;
+  margin-left: auto;
+  margin-right: 5px;
+  text-align: right;
+}
+/*.whiteHover:hover{
+  color: #fff;
+}*/
+.buttonLinks > a{
+  color: white;
+}
+.buttonLinks > a:hover{
+  color: #D2A857;
+}
+.buttonLinks > a > .iconGrey{
+  border: 2px solid #D2A857;
+  border-radius: 50%;
+  font-size: 16px;
+  color: white;
   transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   position: relative;
   padding: 6px;
@@ -42,24 +72,16 @@ a{
   margin-left: 5px;
   display: inline-block;
 }
-.buttonLinks{
-  width: 230px;
-  margin-left: auto;
-  margin-right: 5px;
-  text-align: right;
-}
-.whiteHover:hover{
-  color: #fff;
-}
-.buttonLinks a:hover{
-  color: white;
-}
 .newBin{
   margin-right: 15px;
 }
+/*.newBin:hover{
+  margin-right: 15px;
+}*/
 
 .arrows{
   font-size: 20px;
+  color:#D2A857;
 }
 
 .scenes {

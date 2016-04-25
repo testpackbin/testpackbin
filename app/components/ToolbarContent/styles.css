@@ -18,9 +18,7 @@ li{
   padding-bottom: 6px;
   margin-left: -4px;
 }
-.signOut:hover{
-  color: white;
-}
+
 .button {
   background: transparent;
   border: 0;
@@ -33,6 +31,9 @@ li{
   color: #cadaed;
   float: right;
   margin-right: 0;
+}
+.button:hover {
+ color: white;
 }
 .buttonShow {
   background: transparent;
@@ -52,6 +53,9 @@ li{
 .logOut{
   color: #cadaed;
   background-color: #AABBD7;
+}
+.logOut:hover{
+  color: white;
 }
 .button[disabled] {
   opacity: 0.2;
