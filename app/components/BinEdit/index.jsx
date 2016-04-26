@@ -2,15 +2,19 @@ import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
 import ToolbarContent from '../ToolbarContent';
 import styles from './styles.css';
-import BinReadMe from 'components/BinReadMe';
 import Toolbar from 'common/components/Toolbar';
 import BinForm from 'components/BinForm';
-import BinUpload from 'components/BinUpload';
+import Edit from 'react-icons/lib/md/edit';
+
+@Cerebral({
+    jwt: 'session.jwt',
+    userId: 'user.user._id',
+    bin: "admin.bin"
+})
 
 class BinEdit extends React.Component {
   constructor() {
     super();
- //   this.state = {visible: false};
   }
   render() {
       return (
@@ -22,11 +26,20 @@ class BinEdit extends React.Component {
             <div className={styles.titleHead}>CREATE COURSE</div>
             <BinForm />
             <hr/>
-            <BinUpload type="bin"/>
-            <hr/>
-            <BinUpload type="test"/>
-            <hr/>           
-            <BinReadMe />
+            <button 
+              className={styles.Button}
+              type="submit"
+              onClick={() => this.props.signals.admin.testEditOpened()}>
+              <Edit className={styles.icon}/>
+              Add new test
+            </button>
+            <button
+              className={styles.Button}
+              type="submit"
+              onClick={() => location.href=`http://www.webpackbin.dev:4000/${this.props.bin.id}?jwt=${this.props.jwt}&user=${this.props.userId}`}>
+              <Edit className={styles.icon}/>
+              Edit bin in webpack
+            </button>
           </div>
        </div>
      );
