@@ -26,7 +26,7 @@ class CoursesList extends React.Component {
              <CourseButton key={index} course={course} links={links} index={index}/>
              {(this.props.isAdmin)?
                <div>
-                 <button onClick={() => this.props.signals.admin.binEditClicked({id: course._id})}>Edit</button>
+                 <input type="submit" value="Edit" onClick={() => this.props.signals.admin.binEditOpened({id:course.courseId._id})}/>
                  <button onClick={() => this.props.signals.admin.removeItemClicked({item: 'course', index: index, id: course._id})}>Remove</button>  
                </div>
              :""}
@@ -34,6 +34,7 @@ class CoursesList extends React.Component {
           )  
         })
       }
+      <input type="submit" value="Add new bin" onClick={() => this.props.signals.admin.binEditOpened({id:""})}/>    
       </div>
     );
   }
