@@ -4,6 +4,7 @@ import styles from './styles.css';
 import CourseButton from 'common/components/CourseButton';
 import Edit from 'react-icons/lib/md/edit';
 import Remove from 'react-icons/lib/md/highlight-remove';
+import NewBin from 'react-icons/lib/md/create-new-folder';
 
 @Cerebral({
   jwt: 'session.jwt',
@@ -39,7 +40,7 @@ class CoursesList extends React.Component {
           )
         })
       }
-      <input type="submit" value="Add new bin" onClick={() => this.props.signals.admin.binEditOpened({id:""})}/>    
+      <button className={styles.Button} type="submit" onClick={() => this.props.signals.admin.binEditOpened({id:""})}><NewBin className={styles.iconNewBin}/> Add New Bin</button>
       </div>
     );
   }

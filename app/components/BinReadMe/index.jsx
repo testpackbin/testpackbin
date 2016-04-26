@@ -1,8 +1,7 @@
 import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
 import styles from './styles.css';
-import AngleLeft from 'react-icons/lib/fa/angle-left';
-import AngleRight from 'react-icons/lib/fa/angle-right';
+import Save from 'react-icons/lib/md/save';
 
 class BinReadMe extends React.Component {
   constructor(props) {
@@ -11,12 +10,12 @@ class BinReadMe extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        <AngleLeft className={styles.arrow}/>README/<AngleRight className={styles.arrow}/><br/>
+        <div>README</div><br/>
 
       <form>
-        <input type="file"/>
-        <button type="submit">Submit</button>
+          <input type="file" name="upload"/>
       </form>
+        <div style={{float: "right", marginTop: "10px"}}><button className={styles.button} type="button"><Save className={styles.icon}/> Save</button></div>
       </div>
     );
   }
