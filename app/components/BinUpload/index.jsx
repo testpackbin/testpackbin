@@ -13,7 +13,7 @@ class BinUpload extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
-        <AngleLeft className={styles.arrow}/>BIN FILES/<AngleRight className={styles.arrow}/><br/>
+        <div>BIN FILES</div><br/>
         <input type="file"/><br />
       </div>
     );

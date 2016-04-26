@@ -3,7 +3,6 @@ import binEditOpened from './signals/binEditOpened';
 import formSubmitted from './signals/formSubmitted';
 import inputChange from './signals/inputChange';
 
-import binEditClicked from './signals/binEditClicked';
 import removeItemClicked from './signals/removeItemClicked';
 
 export default () => {
@@ -15,6 +14,7 @@ export default () => {
         sub: '',
         description: ''
       },
+      bin: null,
       users: []
     });
 
@@ -25,7 +25,6 @@ export default () => {
       inputChange: {
         chain: inputChange
       },
-      binEditClicked,
       binEditOpened,
       removeItemClicked
     });

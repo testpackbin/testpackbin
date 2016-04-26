@@ -1,7 +1,10 @@
 import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
 import styles from './styles.css';
-import CourseButton from 'common/components/CourseButton'
+import CourseButton from 'common/components/CourseButton';
+import Edit from 'react-icons/lib/md/edit';
+import Remove from 'react-icons/lib/md/highlight-remove';
+import NewBin from 'react-icons/lib/md/create-new-folder';
 
 @Cerebral({
   jwt: 'session.jwt',
@@ -16,6 +19,9 @@ class CoursesList extends React.Component {
   render() {
     return (
       <div className={styles.wrapper}>
+        {(this.props.isAdmin)?
+          <div className={styles.titleHead}>COURSES</div>
+        :""}
         {this.props.courses.map((course, index) => {
           const links = {
             binLink: (course.binId) ? `http://www.webpackbin.dev:4000?${course.binId.id}?jwt=${this.props.jwt}&user=${this.props.userId}`: '',
@@ -25,15 +31,16 @@ class CoursesList extends React.Component {
             <div>
              <CourseButton key={index} course={course} links={links} index={index}/>
              {(this.props.isAdmin)?
-               <div>
-                 <button onClick={() => this.props.signals.admin.binEditClicked({id: course._id})}>Edit</button>
-                 <button onClick={() => this.props.signals.admin.removeItemClicked({item: 'course', index: index, id: course._id})}>Remove</button>  
+               <div className={styles.buttonLinks}>
+                 <button className={styles.Button} onClick={() => this.props.signals.admin.binEditOpened({id:course.courseId._id})}><Edit className={styles.icon}/>Edit</button>
+                 <button className={styles.Button} onClick={() => this.props.signals.admin.removeItemClicked({item: 'course', index: index, id: course._id})}><Remove className={styles.icon}/>Remove</button>
                </div>
              :""}
            </div>
-          )  
+          )
         })
       }
+      <button className={styles.Button} type="submit" onClick={() => this.props.signals.admin.binEditOpened({id:""})}><NewBin className={styles.iconNewBin}/> Add New Bin</button>
       </div>
     );
   }
