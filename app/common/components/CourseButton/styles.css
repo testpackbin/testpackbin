@@ -1,6 +1,6 @@
 .title {
   font-family: Ubuntu, sans-serif;
-  color: #D2A857;
+  color: #CADAED;
   font-size: 25px;
   text-transform: capitalize;
 }
@@ -28,7 +28,7 @@ a{
 .courseWrapper:hover {
   color: #1b232e;
   background-color: #526886;
-  border: 2px solid #D2A857;
+  border: 2px solid #CADAED;
 }
 /*.iconGrey {
   border: 2px solid #D2A857;
@@ -58,10 +58,10 @@ a{
   color: white;
 }
 .buttonLinks > a:hover{
-  color: #D2A857;
+  color: #CADAED;
 }
 .buttonLinks > a > .iconGrey{
-  border: 2px solid #D2A857;
+  border: 2px solid #CADAED;
   border-radius: 50%;
   font-size: 16px;
   color: white;
@@ -81,7 +81,7 @@ a{
 
 .arrows{
   font-size: 20px;
-  color:#D2A857;
+  color:#CADAED;
 }
 
 .scenes {

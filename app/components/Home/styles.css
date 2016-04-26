@@ -85,7 +85,7 @@ h1 {
   vertical-align: top;
   box-sizing: border-box;
   padding: 10px 25px;
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(202, 218, 237, 0.2);
   height: 250px;
 }
 
@@ -101,14 +101,22 @@ h1 {
 }
 
 .columnTitle {
-  margin: 0 0 10px 0;
+  margin: 0 auto;
 }
 
 .input {
   border-radius: 5px;
   margin: 3px 0;
 }
-
+.submitButtonLogin{
+  composes: button;
+  width: 100%;
+  margin: 5px 0;
+  padding: 0;
+  height: 45px;
+  font-size: 16px;
+  margin-top: 49px;
+}
 .submitButton {
   composes: button;
   width: 100%;
@@ -125,6 +133,7 @@ h1 {
 
 .submitButton[disabled]:hover {
   background-color: #eb1e64;
+  color: black
 }
 
 

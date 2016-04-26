@@ -1,7 +1,13 @@
 .wrapper {
   height: 100vh;
 }
-
+.titleHead{
+  color: #CADAED;
+  font-size: 28px;
+  margin-left: 0px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
 .contentWrapper {
   padding: 20px;
   height: calc(100% - 56px);
@@ -26,4 +32,8 @@
   composes: overlay;
   visibility: visible;
   opacity: 1;
+}
+.formWrapper{
+  width: 600px;
+  margin: 0 auto;
 }

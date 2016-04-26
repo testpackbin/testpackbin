@@ -29,7 +29,6 @@ class BinForm extends React.Component {
           e.preventDefault();
           this.props.signals.admin.formSubmitted();
         }}>
-          <span className={style.title}>CREATE COURSE</span>
           <input
             type="text"
             placeholder="Course Name"

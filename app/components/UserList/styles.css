@@ -22,7 +22,7 @@
   transform: translate3d(0px, 0px, 0px);
 }
 .titleHead{
-  color: #D2A857;
+  color: #CADAED;
   font-size: 28px;
   margin-left: 210px;
   margin-bottom: 10px;
@@ -46,11 +46,11 @@
   margin: 10px 0;
   border: 2px solid #576679;
   position: relative;
-  color: #D2A857;
+  color: #CADAED;
 }
 .li:hover{
   background-color: #526886;
-  border: 2px solid #D2A857;
+  border: 2px solid #CADAED;
 }
 .Button{
  position: relative;
