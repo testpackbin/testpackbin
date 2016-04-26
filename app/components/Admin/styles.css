@@ -27,3 +27,7 @@
   visibility: visible;
   opacity: 1;
 }
+hr{
+  border-color: #526886;
+  opacity: 0.3;
+}

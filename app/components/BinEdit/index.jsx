@@ -18,8 +18,9 @@ class BinEdit extends React.Component {
           <Toolbar>
             <ToolbarContent />
           </Toolbar>
-          <div className={styles.contentWrapper}>
-            <BinForm/>
+          <div className={styles.formWrapper}>
+            <div className={styles.titleHead}>CREATE COURSE</div>
+            <BinForm />
             <hr/>
             <BinUpload type="bin"/>
             <hr/>

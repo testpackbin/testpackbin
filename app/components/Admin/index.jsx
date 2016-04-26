@@ -40,7 +40,7 @@ class Admin extends React.Component {
         <div className={styles.contentWrapper}>
           <CoursesList/>
           <hr/>
-          <UserList/> 
+          <UserList/>
         </div>
       </div>
     );

@@ -43,18 +43,13 @@ class Home extends React.Component {
   renderButtons() {
     return (
       <div className={styles.columnWrapper}>
-        <div className={styles.column}>
+        {/*<div className={styles.column}>
           <div className={styles.columnContent}>
             <h2 className={styles.columnTitle}>TestPack Bin</h2>
-            {/*{
-                <div>
-
-                </div>
-            }*/}
             <p>Information about our app should go here. </p>
             <p>Even more information about our app should go here.</p>
           </div>
-        </div>
+        </div>*/}
         <div className={styles.column}>
           <div className={styles.columnContent}>
             <h2 className={styles.columnTitle}>Login</h2>
@@ -74,7 +69,7 @@ class Home extends React.Component {
                 required
                 type="password"
                 onChange={(e) => this.onInputChange('loginForm', 'password', e.target.value)}/>
-              <button className={styles.submitButton} type="submit" disabled={this.props.isLoggingIn}>Log me in!</button>
+              <button className={styles.submitButtonLogin} type="submit" disabled={this.props.isLoggingIn}>Log me in!</button>
             </form>
             {this.props.loginErrorMessage ? this.renderErrorMessage(this.props.loginErrorMessage) : null}
           </div>
@@ -119,10 +114,6 @@ class Home extends React.Component {
             {/*<div className={styles.logo}></div>*/}
             <div className={styles.logo}><AngleLeft className={styles.arrow}/>TESTPACKBIN /<AngleRight className={styles.arrow}/></div>
             <h1>Welcome</h1>
-            <div className={styles.descText}>
-              A really catchy tag line should go here.
-            </div>
-            <div className={styles.showYouHowText}>Dive right in</div>
             {this.renderButtons()}
           </div>
         </div>
