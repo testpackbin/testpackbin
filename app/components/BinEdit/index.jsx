@@ -9,7 +9,7 @@ import BinForm from 'components/BinForm';
 import BinUpload from 'components/BinUpload';
 
 @Cerebral({
-  courses: 'user.user.courses'
+  bin: 'admin.selectedCourse'
 })
 class BinEdit extends React.Component {
   constructor() {
