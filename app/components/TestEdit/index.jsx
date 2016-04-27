@@ -2,23 +2,16 @@ import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
 import styles from './styles.css';
 import TestCodeMirror from 'common/components/CodeMirror';
+import CodeEditor from 'common/components/CodeEditor';
 
-require('codemirror/mode/javascript/javascript');
+// require('codemirror/mode/javascript/javascript');
 
 class TestEdit extends React.Component {
   constructor() {
     super();
-    this.state = {
-      code: '// Code'
-    }
- //   this.state = {visible: false};
   }
 
-  updateCode(newCode) {
-    this.setState({
-      code: newCode
-    });
-  }
+
 
   render() {
     var options = {
@@ -26,7 +19,7 @@ class TestEdit extends React.Component {
     }
     return (
       <div>
-        <TestCodeMirror></TestCodeMirror>
+        <CodeEditor></CodeEditor>
       </div>
     );
   }

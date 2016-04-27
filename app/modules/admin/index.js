@@ -3,6 +3,7 @@ import binEditOpened from './signals/binEditOpened';
 import formSubmitted from './signals/formSubmitted';
 import inputChange from './signals/inputChange';
 import testEditOpened from './signals/testEditOpened';
+import saveTests from './signals/saveTests';
 
 import removeItemClicked from './signals/removeItemClicked';
 
@@ -28,7 +29,8 @@ export default () => {
       },
       binEditOpened,
       removeItemClicked,
-      testEditOpened
+      testEditOpened,
+      saveTests
     });
   };
 };

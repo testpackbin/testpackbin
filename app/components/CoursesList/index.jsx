@@ -34,6 +34,16 @@ class CoursesList extends React.Component {
                <div className={styles.buttonLinks}>
                  <button className={styles.Button} onClick={() => this.props.signals.admin.binEditOpened({id:course.courseId._id})}><Edit className={styles.icon}/>Edit</button>
                  <button className={styles.Button} onClick={() => this.props.signals.admin.removeItemClicked({item: 'course', index: index, id: course._id})}><Remove className={styles.icon}/>Remove</button>
+                 <button
+                   className={styles.Button}
+                   type="submit"
+                   onClick={() => this.props.signals.admin.testEditOpened(
+                     {
+                       id: course.courseId._id
+                     })}
+                   >
+                   Edit Tests
+                   </button>
                </div>
              :""}
            </div>
@@ -42,13 +52,6 @@ class CoursesList extends React.Component {
       }
       <button className={styles.Button} type="submit" onClick={() => this.props.signals.admin.binEditOpened({id:""})}><NewBin className={styles.iconNewBin}/> Add New Bin</button>
       <br />
-      <button
-        className={styles.Button}
-        type="submit"
-        onClick={() => this.props.signals.admin.testEditOpened({id: ""})}
-        >
-        Edit Bin
-        </button>
       </div>
     );
   }

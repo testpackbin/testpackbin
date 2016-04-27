@@ -1,0 +1,14 @@
+.sixColumn {
+  display: inline-block;
+  width: 40vw;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.container h1 {
+  display: block;
+  float: left;
+}
