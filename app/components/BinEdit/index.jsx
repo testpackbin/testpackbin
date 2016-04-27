@@ -25,8 +25,8 @@ class BinEdit extends React.Component {
           <div className={styles.formWrapper}>
             <div className={styles.titleHead}>CREATE COURSE</div>
             <BinForm />
-            <hr/>
-            <button 
+            
+            <button
               className={styles.Button}
               type="submit"
               onClick={() => this.props.signals.admin.testEditOpened()}>

@@ -2,6 +2,8 @@ import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
 import styles from './styles.css';
 import CodeEditor from 'common/components/CodeEditor';
+import Toolbar from 'common/components/Toolbar';
+import ToolbarContent from '../ToolbarContent';
 
 // require('codemirror/mode/javascript/javascript');
 
@@ -18,7 +20,10 @@ class TestEdit extends React.Component {
     }
     return (
       <div>
-        <CodeEditor></CodeEditor>
+        <Toolbar>
+          <ToolbarContent />
+        </Toolbar>
+        <CodeEditor />
       </div>
     );
   }

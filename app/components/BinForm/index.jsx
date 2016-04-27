@@ -41,25 +41,27 @@ class BinForm extends React.Component {
           <input
             type="text"
             placeholder="Bin Id (camel case, no spaces)"
-            value={this.props.bin?this.props.bin.id:""}            
+            value={this.props.bin?this.props.bin.id:""}
             required
             onChange={(e) => this.onInputChange('id', e.target.value)}
           />
           <input
             type="text"
             placeholder="Subject tag(i.e. Javascript)"
-            value={this.props.bin?this.props.bin.subject:""}            
+            value={this.props.bin?this.props.bin.subject:""}
             required
             onChange={(e) => this.onInputChange('subject', e.target.value)}
           />
           <textarea
+            className={style.textArea}
             placeholder="Description"
             rows="10"
             cols="70"
-            value={this.props.bin?this.props.bin.readme:""}            
+            value={this.props.bin?this.props.bin.readme:""}
             required
             onChange={(e) => this.onInputChange('readme', e.target.value)}>
           </textarea>
+          <br />
         <button type="submit" className={style.submitButton}><span className={style.addIcon}><Add/></span>Save</button>
         </form>
       </div>
