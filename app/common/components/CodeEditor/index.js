@@ -10,6 +10,7 @@ import 'brace/theme/monokai';
 @Cerebral({
   bin: "admin.bin"
 })
+
 class CodeEditor extends React.Component {
   constructor(props) {
     super(props);
@@ -21,7 +22,8 @@ class CodeEditor extends React.Component {
   }
 
   onLoad(editor) {
-    console.log('Editor', editor);
+    console.log('Loaded with', editor);
+    editor.value = this.props.bin ? this.props.bin.tests[0].content : "";
   }
 
   render() {
@@ -38,6 +40,7 @@ class CodeEditor extends React.Component {
               height="600px"
               theme="monokai"
               name="spec"
+              onLoad={this.onLoad.bind(this)}
               value={this.props.bin ?
               this.props.bin.tests[0].content : ""}
             />
@@ -56,7 +59,10 @@ class CodeEditor extends React.Component {
 
         </div>
 
-        <button>Save</button>
+        <button
+        type="submit"
+
+        >Save</button>
         <button>Cancel</button>
       </div>
     )

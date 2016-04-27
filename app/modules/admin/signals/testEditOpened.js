@@ -6,7 +6,6 @@ import setBin from '../actions/setBin';
 import showSnackbar from 'common/factories/actions/showSnackbar';
 
 export default [
-  setPage('testEdit'),
   when('input:/id'), {
     isTrue: [
       loadBin, {
@@ -15,5 +14,7 @@ export default [
       }
     ],
     isFalse: []
-  }
+  },
+  setPage('testEdit')
+
 ]

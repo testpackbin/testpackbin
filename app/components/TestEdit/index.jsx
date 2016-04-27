@@ -1,7 +1,6 @@
 import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
 import styles from './styles.css';
-import TestCodeMirror from 'common/components/CodeMirror';
 import CodeEditor from 'common/components/CodeEditor';
 
 // require('codemirror/mode/javascript/javascript');

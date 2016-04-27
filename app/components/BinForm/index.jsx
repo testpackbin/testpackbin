@@ -19,8 +19,8 @@ class BinForm extends React.Component {
   componentDidMount(){
       React.findDOMNode(this.refs.nameInput).focus();
     }
-  onInputChange(form, type, value) {
-    this.props.signals.admin.inputChange({form: form, type: type, value: value});
+  onInputChange(field, value) {
+    this.props.signals.admin.inputChange({field: field, value: value});
   }
   render() {
     return (
@@ -36,30 +36,31 @@ class BinForm extends React.Component {
             required
             focus
             ref="nameInput"
-            onChange={(e) => this.onInputChange('binForm', 'name', e.target.value)}
+            onChange={(e) => this.onInputChange('name', e.target.value)}
           />
           <input
             type="text"
             placeholder="Bin Id (camel case, no spaces)"
             value={this.props.bin?this.props.bin.id:""}            
             required
-            onChange={(e) => this.onInputChange('binForm', 'id', e.target.value)}
+            onChange={(e) => this.onInputChange('id', e.target.value)}
           />
           <input
             type="text"
-            placeholder="Subject (i.e. Javascript)"
+            placeholder="Subject tag(i.e. Javascript)"
             value={this.props.bin?this.props.bin.subject:""}            
             required
-            onChange={(e) => this.onInputChange('binForm', 'sub', e.target.value)}
+            onChange={(e) => this.onInputChange('subject', e.target.value)}
           />
-          <input
-            type="text"
+          <textarea
             placeholder="Description"
+            rows="10"
+            cols="70"
             value={this.props.bin?this.props.bin.readme:""}            
             required
-            onChange={(e) => this.onInputChange('binForm', 'description', e.target.value)}
-          />
-        <button type="submit" className={style.submitButton}><span className={style.addIcon}><Add/></span>Add Bin</button>
+            onChange={(e) => this.onInputChange('readme', e.target.value)}>
+          </textarea>
+        <button type="submit" className={style.submitButton}><span className={style.addIcon}><Add/></span>Save</button>
         </form>
       </div>
     );
