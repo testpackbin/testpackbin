@@ -6,7 +6,8 @@ function updateBin({state, services, output}) {
     id : bin.id,
     name : bin.name,
     subject : bin.subject,
-    readme : bin.readme
+    readme : bin.readme,
+    tests: bin.tests
   })
     .then((res) => output.success())
     .catch(() => output.error());

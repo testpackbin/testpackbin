@@ -1,0 +1,38 @@
+
+.sixColumn {
+  display: inline-block;
+  width: 40vw;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.container h1 {
+  display: block;
+  float: left;
+}
+.titleHead{
+  color: #CADAED;
+  font-size: 30px;
+  margin-bottom: -10px;
+  margin-top: 5px;
+  margin-left: 100px;
+}
+.buttons{
+  float: right;
+  margin-top: 10px;
+  margin-right: 220px;
+}
+.iconButton{
+  margin: 10px;
+  font-size: 25px;
+}
+.iconButton:hover{
+  color: #EB1E64;
+}
+.icon{
+  font-size: 25px;
+  margin-bottom: 3px;
+}

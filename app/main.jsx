@@ -59,7 +59,7 @@ controller.addModules({
     '/': 'home.opened',
     '/courses': 'courses.opened',
     '/admin': 'admin.opened',
-    '/binedit':'admin.binEditOpened',
+    '/binedit':'admin.binEditOpened',  
     '*': 'missingRouteRouted'
   }, {
     onlyHash: false,

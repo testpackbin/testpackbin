@@ -5,6 +5,7 @@ import CourseButton from 'common/components/CourseButton';
 import Edit from 'react-icons/lib/md/edit';
 import Remove from 'react-icons/lib/md/highlight-remove';
 import NewBin from 'react-icons/lib/md/create-new-folder';
+import EditTest from 'react-icons/lib/go/file-code';
 
 @Cerebral({
   jwt: 'session.jwt',
@@ -32,8 +33,20 @@ class CoursesList extends React.Component {
              <CourseButton key={index} course={course} links={links} index={index}/>
              {(this.props.isAdmin)?
                <div className={styles.buttonLinks}>
-                 <button className={styles.Button} onClick={() => this.props.signals.admin.binEditOpened({id:course.courseId._id})}><Edit className={styles.icon}/>Edit</button>
-                 <button className={styles.Button} onClick={() => this.props.signals.admin.removeItemClicked({item: 'course', index: index, id: course._id})}><Remove className={styles.icon}/>Remove</button>
+                 <button className={styles.Button} onClick={() => this.props.signals.admin.binEditOpened({id:course.courseId._id})}><Edit className={styles.icon}/>Edit Course</button>
+                 <button
+                   className={styles.Button}
+                   type="submit"
+                   onClick={() => this.props.signals.admin.testEditOpened(
+                     {
+                       id: course.courseId._id
+                     })}
+                   >
+                   <EditTest className={styles.icon}/>
+                   Edit Tests
+                   </button>
+                   <button className={styles.Button} onClick={() => this.props.signals.admin.removeItemClicked({item: 'course', index: index, id: course._id})}><Remove className={styles.icon}/>Remove</button>
+
                </div>
              :""}
            </div>
@@ -41,6 +54,7 @@ class CoursesList extends React.Component {
         })
       }
       <button className={styles.Button} type="submit" onClick={() => this.props.signals.admin.binEditOpened({id:""})}><NewBin className={styles.iconNewBin}/> Add New Bin</button>
+      <br />
       </div>
     );
   }

@@ -16,7 +16,7 @@ function createNewBin({state, services, output}) {
     loaders: [],
     packages: []
   })
-    .then((res) => output.success())
+    .then((res) => output.success(res.result))
     .catch(() => output.error());
 }
 
