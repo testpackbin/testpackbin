@@ -1,5 +1,5 @@
 function updateInput({state, input}) {
-  state.set(['binEdit', input.form, input.type], input.value);
+  state.set(['admin', 'bin', input.field], input.value);
 }
 
 export default updateInput;
