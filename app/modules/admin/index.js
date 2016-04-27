@@ -5,6 +5,7 @@ import formSubmitted from './signals/formSubmitted';
 import inputChange from './signals/inputChange';
 import saveTests from './signals/saveTests';
 import removeItemClicked from './signals/removeItemClicked';
+import testCodeUpdated from './signals/testCodeUpdated';
 
 export default () => {
   return (module) => {
@@ -36,7 +37,8 @@ export default () => {
       binEditOpened,
       removeItemClicked,
       testEditOpened,
-      saveTests
+      saveTests,
+      testCodeUpdated
     });
   };
 };

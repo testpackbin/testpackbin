@@ -1,3 +1,5 @@
+'use strict'
+
 import React from 'react';
 import AceEditor from 'react-ace';
 import brace from 'brace';
@@ -7,6 +9,7 @@ import {Decorator as Cerebral} from 'cerebral-view-react';
 import 'brace/mode/javascript';
 import 'brace/theme/monokai';
 
+
 @Cerebral({
   bin: "admin.bin"
 })
@@ -14,16 +17,35 @@ import 'brace/theme/monokai';
 class CodeEditor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
   updateCode(newCode) {
-    console.log(`Updating code with ${newCode}`)
+    // this.state.set('spec', newCode)
   }
 
   onLoad(editor) {
-    console.log('Loaded with', editor);
-    editor.value = this.props.bin ? this.props.bin.tests[0].content : "";
+    let value = this.props.bin ? this.props.bin.tests[0].content : "";
+    editor.setValue(value);
+    this.setState({
+      editor: editor
+    })
+  }
+
+  updateBin() {
+    let bin = {
+      _id: this.props.bin._id,
+      tests: [
+        {
+          name: "spec.js",
+          content: this.state.editor.getValue()
+        }
+      ]
+    }
+    this.props.signals.admin.saveTests({bin: bin});
+  }
+
+  getSpec() {
+    return this.props.bin ? this.props.bin.tests[0].content : "";
   }
 
   render() {
@@ -39,10 +61,9 @@ class CodeEditor extends React.Component {
               mode="javascript"
               height="600px"
               theme="monokai"
-              name="spec"
+              // onChange={this.updateCode.bind(this)}
               onLoad={this.onLoad.bind(this)}
-              value={this.props.bin ?
-              this.props.bin.tests[0].content : ""}
+              value={this.props.bin.tests[0].content}
             />
           </div>
 
@@ -61,7 +82,7 @@ class CodeEditor extends React.Component {
 
         <button
         type="submit"
-
+        onClick = {() => this.updateBin()}
         >Save</button>
         <button>Cancel</button>
       </div>
