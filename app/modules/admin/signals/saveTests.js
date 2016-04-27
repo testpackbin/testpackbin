@@ -5,8 +5,8 @@ import showSnackbar from 'common/factories/actions/showSnackbar';
 export default [
   updateBin, {
     success: [
-      setPage('admin'),
-      showSnackbar('Tests Saved!')
+      showSnackbar('Tests saved!'),
+      setPage('admin')
     ],
     error: [showSnackbar('Error saving tests!')]
   }

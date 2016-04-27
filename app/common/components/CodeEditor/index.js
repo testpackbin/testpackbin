@@ -5,9 +5,11 @@ import AceEditor from 'react-ace';
 import brace from 'brace';
 import style from './style.css';
 import {Decorator as Cerebral} from 'cerebral-view-react';
+import Save from 'react-icons/lib/md/save';
+import Cancel from 'react-icons/lib/ti/cancel';
 
 import 'brace/mode/javascript';
-import 'brace/theme/monokai';
+import 'brace/theme/testPackBin';
 
 
 @Cerebral({
@@ -51,9 +53,8 @@ class CodeEditor extends React.Component {
   render() {
     return (
       <div>
+        <div className={style.titleHead}>Edit Tests</div>
         <div className={style.container}>
-          <h1>Edit Tests</h1>
-
           <div className={style.sixColumn}>
             <h3>spec.js</h3>
 
@@ -80,11 +81,19 @@ class CodeEditor extends React.Component {
 
         </div>
 
-        <button
-        type="submit"
-        onClick = {() => this.updateBin()}
+
+        {/*<button
+         type="submit"
         >Save</button>
-        <button>Cancel</button>
+        <button>Cancel</button>*/}
+        <div className={style.buttons}>
+          <span
+          onClick={() => this.updateBin()}
+          className={style.iconButton}><Save className={style.icon}/> Save</span>
+          <span
+          onClick={() => this.props.signals.admin.opened()}
+          className={style.iconButton}><Cancel className={style.icon}/> Cancel </span>
+        </div>
       </div>
     )
   }

@@ -30,7 +30,7 @@ class CourseButton extends React.Component {
             <a className={styles.newBin} href={this.props.links.courseLink}><Start className={styles.iconGrey}/>New Bin</a>
             <a href={this.props.links.binLink}><Refresh className={styles.iconGrey}/>Continue</a>
             {/*{(this.props.links.binLink)? <a className={styles.continue} href={this.props.links.binLink}><Refresh className={styles.iconGrey}/>Continue</a> : ''}*/}
-        </div>
+          </div>
         </div>
       </div>
     );
