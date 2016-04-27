@@ -41,6 +41,14 @@ class CoursesList extends React.Component {
         })
       }
       <button className={styles.Button} type="submit" onClick={() => this.props.signals.admin.binEditOpened({id:""})}><NewBin className={styles.iconNewBin}/> Add New Bin</button>
+      <br />
+      <button
+        className={styles.Button}
+        type="submit"
+        onClick={() => this.props.signals.admin.testEditOpened({id: ""})}
+        >
+        Edit Bin
+        </button>
       </div>
     );
   }

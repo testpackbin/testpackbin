@@ -6,12 +6,14 @@ import Courses from 'components/Courses';
 import Admin from 'components/Admin';
 import styles from './styles.css';
 import BinEdit from 'components/BinEdit';
+import TestEdit from 'components/TestEdit';
 
 const pages = {
   'home': Home,
   'courses': Courses,
   'admin': Admin,
-  'binEdit' : BinEdit
+  'binEdit' : BinEdit,
+  'testEdit' : TestEdit
 };
 
 @Cerebral({

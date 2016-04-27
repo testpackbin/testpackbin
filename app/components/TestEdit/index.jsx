@@ -1,29 +1,35 @@
 import React from 'react';
 import {Decorator as Cerebral} from 'cerebral-view-react';
-import ToolbarContent from '../ToolbarContent';
 import styles from './styles.css';
-import BinReadMe from 'components/BinReadMe';
-import Toolbar from 'common/components/Toolbar';
-import BinForm from 'components/BinForm';
-import BinUpload from 'components/BinUpload';
+import TestCodeMirror from 'common/components/CodeMirror';
 
-class BinEdit extends React.Component {
+require('codemirror/mode/javascript/javascript');
+
+class TestEdit extends React.Component {
   constructor() {
     super();
+    this.state = {
+      code: '// Code'
+    }
  //   this.state = {visible: false};
   }
+
+  updateCode(newCode) {
+    this.setState({
+      code: newCode
+    });
+  }
+
   render() {
-      return (
-        <div className={styles.wrapper}>
-          <Toolbar>
-            <ToolbarContent />
-          </Toolbar>
-          <div className={styles.formWrapper}>
-            <div className={styles.titleHead}>Edit Tests</div>
-          </div>
-       </div>
-     );
+    var options = {
+      lineNumbers: true
+    }
+    return (
+      <div>
+        <TestCodeMirror></TestCodeMirror>
+      </div>
+    );
   }
 }
 
-export default BinEdit;
+export default TestEdit;

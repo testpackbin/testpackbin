@@ -2,6 +2,7 @@ import opened from './signals/opened';
 import binEditOpened from './signals/binEditOpened';
 import formSubmitted from './signals/formSubmitted';
 import inputChange from './signals/inputChange';
+import testEditOpened from './signals/testEditOpened';
 
 import removeItemClicked from './signals/removeItemClicked';
 
@@ -26,7 +27,8 @@ export default () => {
         chain: inputChange
       },
       binEditOpened,
-      removeItemClicked
+      removeItemClicked,
+      testEditOpened
     });
   };
 };
