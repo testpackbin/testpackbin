@@ -30,6 +30,16 @@
  /*box-shadow-bottom: 0 0 10px #eb1e64 ;*/
  font-size: 30px
 }
+.textArea{
+  color: #1b232e;
+  background-color: #CADAED;
+  width: 540px;
+  max-width: 540px;
+  margin-top: 20px;
+  margin-left: 27px;
+  height: 300px;
+
+}
 .submitButton{
  position: relative;
  left: 460px;

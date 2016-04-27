@@ -3,7 +3,9 @@ import binEditOpened from './signals/binEditOpened';
 import testEditOpened from './signals/testEditOpened';
 import formSubmitted from './signals/formSubmitted';
 import inputChange from './signals/inputChange';
+import saveTests from './signals/saveTests';
 import removeItemClicked from './signals/removeItemClicked';
+import testCodeUpdated from './signals/testCodeUpdated';
 
 export default () => {
   return (module) => {
@@ -33,7 +35,10 @@ export default () => {
         chain: inputChange
       },
       binEditOpened,
-      removeItemClicked
+      removeItemClicked,
+      testEditOpened,
+      saveTests,
+      testCodeUpdated
     });
   };
 };

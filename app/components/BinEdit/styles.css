@@ -37,3 +37,21 @@
   width: 600px;
   margin: 0 auto;
 }
+.Button{
+  position: relative;
+  //left: 460px;
+  font-size: 25px;
+  background: transparent;
+  border: 0;
+  height: 100%;
+  padding: 0;
+  cursor: pointer;
+  text-align: center;
+  color: #CADAED;
+  margin: 10px;
+  margin-left: 60px;
+}
+.Button:hover{
+  color: #eb1e64;
+  opacity: 0.9;
+}
