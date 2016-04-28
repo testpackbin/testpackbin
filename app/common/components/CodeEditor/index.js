@@ -21,10 +21,6 @@ class CodeEditor extends React.Component {
     super(props);
   }
 
-  updateCode(newCode) {
-    // this.state.set('spec', newCode)
-  }
-
   onLoad(editor) {
     let value = this.props.bin ? this.props.bin.tests[0].content : "";
     editor.setValue(value);
@@ -62,7 +58,6 @@ class CodeEditor extends React.Component {
               mode="javascript"
               height="600px"
               theme="monokai"
-              // onChange={this.updateCode.bind(this)}
               onLoad={this.onLoad.bind(this)}
               value={this.props.bin.tests[0].content}
             />
@@ -81,11 +76,6 @@ class CodeEditor extends React.Component {
 
         </div>
 
-
-        {/*<button
-         type="submit"
-        >Save</button>
-        <button>Cancel</button>*/}
         <div className={style.buttons}>
           <span
           onClick={() => this.updateBin()}
